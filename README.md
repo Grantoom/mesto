@@ -15,4 +15,4 @@
 
 **Проект**
 
-* [Ссылка на проект в GitHub Pages](https://grantoom.github.io/Mesto/)
+* [Ссылка на проект в GitHub Pages](https://grantoom.github.io/mesto/)

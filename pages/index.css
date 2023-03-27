@@ -61,11 +61,14 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 42px;
     line-height: 48px;
     color: #FFFFFF;
     margin: 0;
     max-width: 294px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .section-subtitle {
@@ -77,6 +80,9 @@
     line-height: 22px;
     color: #FFFFFF;
     max-width: 336px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .profile__edit-button {
@@ -104,7 +110,6 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: flex-end;
     max-width: 282px;
     background: #FFFFFF;
     border-radius: 10px;
@@ -112,7 +117,11 @@
 }
 
 .element__img {
-
+    width: 282px;
+    min-height: 282px;
+    object-fit: cover;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .element__description {
@@ -131,6 +140,9 @@
     line-height: 29px;
     color: #000000;
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .element__vector {
