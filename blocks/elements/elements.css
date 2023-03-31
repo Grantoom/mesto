@@ -10,7 +10,7 @@
 @media screen and (max-width: 767px) {
     .elements {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 1fr); 
+        grid-template-rows: repeat(6, 1fr);
         justify-items: center;
     }
 }
