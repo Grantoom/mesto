@@ -24,7 +24,6 @@
 
 .profile {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin: 40px auto 40px;
     max-width: 880px;
@@ -32,7 +31,7 @@
 
 .profile__avatar {
     border-radius: 50%;
-    max-width: 150px;
+    max-width: 120px;
 }
 
 .profile__info {
@@ -43,6 +42,7 @@
     flex-wrap: wrap;
     align-items: baseline;
     gap: 16px 18px;
+    margin-left: 30px;
 }
 
 .section-title {
@@ -93,6 +93,7 @@
     cursor: pointer;
     border: none;
     background: url('../../images/Add Button.svg') center no-repeat;
+    margin-left: 244px;
 }
 
 .profile__add-button:hover {
@@ -181,6 +182,26 @@
     margin: 0;
 }
 
+
+/* СДЕЛАЙ МЕДИА ЗАПРОС НА ВСЕ РАЗРЕШЕНИЯ */
+@media screen and (max-width: 1279px) {
+    .footer__copyrights {
+        max-width: 1024px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+  .footer__copyrights {
+    max-width: 768px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+    .footer__copyrights {
+        max-width: 320px;
+    }
+}
+
 .popup {
     display: none;
     position: fixed;
@@ -193,63 +214,97 @@
     align-items: center;
 }
 
+.popup_opened {
+    display: flex;
+}
+
 .popup__container {
     position: relative;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    width: 430px;
 }
 
-.pop-up__exit {
+.popup__exit {
     border: 0;
     position: absolute;
     background-color: transparent;
-    background-image: url('../../../images/Крестик.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
+    background: url('../../images/Крестик.svg') contain no-repeat;
     cursor: pointer;
     padding: 0;
+    width: 32px;
+    height: 32px;
+    top: -40px;
+    right: -40px;
 }
 
-.pop-up__exit:hover {
+.popup__exit:hover {
     opacity: .6;
 }
 
 .popup__header {
+    font-family: 'Inter';
+    font-style: normal;
     font-weight: 900;
-    margin: 0;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    margin: 34px 64px 0 36px;
 }
 
-.pop-up__input {
+.popup__input {
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     padding: 0;
+    width: 358px;
+    height: 28px;
+    font-size: 14px;
+    line-height: 17px;
 }
 
-.pop-up__input:focus {
+.popup__input:focus {
     outline: none;
 }
 
 .popup__input_name {
-
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    margin-left: 36px;
+    margin-top: 54px;
 }
 
 .popup__input_description {
-
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    margin-left: 36px;
+    margin-top: 30px;
 }
 
-.pop-up__edit {
+.popup__edit {
     background-color: rgba(0, 0, 0);
     padding: 0;
     font-weight: 400;
     text-align: center;
     color: #fff;
-    margin: 0;
+    margin: 48px 36px 37px;
     border-radius: 2px;
     cursor: pointer;
     border: none;
+    width: 358px;
+    min-height: 50px;
+    font-size: 18px;
+    line-height: 22px;
 }
 
-.pop-up__edit:hover {
+.popup__edit:hover {
     background-color: rgba(0, 0, 0, .8);
 }

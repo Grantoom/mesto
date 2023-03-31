@@ -1,23 +1,32 @@
-// Находим форму в DOM
-let formElement = document.querySelector('.popup__container'); // Воспользуйтесь методом querySelector()
-// Находим поля формы в DOM
-let nameInput = document.querySelector('.popup__input_name');// Воспользуйтесь инструментом .querySelector()
-let jobInput = document.querySelector('.popup__input_description'); // Воспользуйтесь инструментом .querySelector()
+let editProfileBtn = document.querySelector('.profile__edit-button');
+let popup = document.querySelector('.popup');
+let editor = document.editor;
+let myname = editor.name;
+let about = editor.about;
+let description = document.querySelector('.section-subtitle');
+let nickName = document.querySelector('.section-title');
+let closeBtn = document.querySelector('.popup__exit');
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
-function handleFormSubmit (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                                                // Так мы можем определить свою логику отправки.
-                                                // О том, как это делать, расскажем позже.
+editProfileBtn.addEventListener('click', function () {
+    popup.classList.add('popup_opened');
+    myname.value = nickName.textContent;
+    about.value = description.textContent;
+})
 
-    // Получите значение полей jobInput и nameInput из свойства value
-
-    // Выберите элементы, куда должны быть вставлены значения полей
-
-    // Вставьте новые значения с помощью textContent
+function handleFormSubmit(evt) {
+    evt.preventDefault();
+    if (myname.value.length > 0 && about.value.length > 0) {
+        nickName.textContent = myname.value;
+        description.textContent = about.value;
+        popup.classList.remove('popup_opened');
+    } else {
+        myname.setAttribute("placeholder", 'Введите имя');
+        about.setAttribute("placeholder", 'Введите информацию о себе');
+    }
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', handleFormSubmit);
+editor.addEventListener('submit', handleFormSubmit);
+
+closeBtn.addEventListener('click', function () {
+    popup.classList.remove('popup_opened');
+})
