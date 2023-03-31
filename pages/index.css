@@ -230,7 +230,7 @@
     border: 0;
     position: absolute;
     background-color: transparent;
-    background: url('../../images/Крестик.svg') contain no-repeat;
+    background: url('../../images/Крестик.svg') center no-repeat;
     cursor: pointer;
     padding: 0;
     width: 32px;
