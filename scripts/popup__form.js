@@ -3,8 +3,8 @@ let popup = document.querySelector('.popup');
 let editor = document.editor;
 let myname = editor.name;
 let about = editor.about;
-let description = document.querySelector('.section-subtitle');
-let nickName = document.querySelector('.section-title');
+let description = document.querySelector('.profile__section-subtitle');
+let nickName = document.querySelector('.profile__section-title');
 let closeBtn = document.querySelector('.popup__exit');
 
 editProfileBtn.addEventListener('click', function () {
