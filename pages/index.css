@@ -13,9 +13,25 @@
     border-color: rgba(84, 84, 84, .7);
 }
 
+@media screen and (max-width: 767px) {
+    .header {
+        max-width: 320;
+        min-height: 56px;
+        margin: 0;
+    }
+}
+
 .header__logo {
     max-width: 142px;
-    margin-bottom: 41px;
+    margin-bottom: 31.6px;
+}
+
+@media screen and (max-width: 767px) {
+    .header__logo {
+        max-width: 103.74px;
+        min-height: 24.4px;
+        margin: 28px 189.26px 31.6px 27px;
+    }
 }
 
 .content {
@@ -27,6 +43,12 @@
     align-items: center;
     margin: 40px auto 40px;
     max-width: 880px;
+}
+
+@media screen and (max-width: 767px) {
+    .profile {
+        flex-direction: column;
+    }
 }
 
 .profile__avatar {
@@ -45,6 +67,14 @@
     margin-left: 30px;
 }
 
+@media screen and (max-width: 767px) {
+    .profile__info {
+        margin: 26px auto 36px;
+        justify-content: center;
+        gap: 14px 10px;
+    }
+}
+
 .section-title {
     font-family: 'Inter';
     font-style: normal;
@@ -57,6 +87,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+    .section-title {
+        font-size: 27px;
+        line-height: 33px;
+        text-align: center;
+    }
 }
 
 .section-subtitle {
@@ -73,14 +111,33 @@
     overflow: hidden;
 }
 
+@media screen and (max-width: 767px) {
+    .section-subtitle {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+}
+
+
 .profile__edit-button {
-    background: url('../../images/Edit Button.svg');
+    background: url('../../images/Edit Button.svg') no-repeat;
+    background-size: contain;
     width: 24px;
     height: 24px;
     cursor: pointer;
     border: none;
     border-color: rgba(255, 255, 255, 1);
 }
+
+@media screen and (max-width: 767px) {
+    .profile__edit-button {
+        width: 18px;
+        height: 18px; 
+    }
+}
+
 
 .profile__edit-button:hover {
     opacity: .6;
@@ -92,8 +149,17 @@
     border-color: rgba(255, 255, 255, 1);
     cursor: pointer;
     border: none;
+    background-size: contain;
     background: url('../../images/Add Button.svg') center no-repeat;
     margin-left: 244px;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__add-button {
+        width: 282px;
+        margin: 0;
+        background: url('../../images/Add Button_mobile.svg') center no-repeat;
+    }
 }
 
 .profile__add-button:hover {
@@ -107,6 +173,14 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 20px 17px;
+}
+
+@media screen and (max-width: 767px) {
+    .elements {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr); 
+        justify-items: center;
+    }
 }
 
 .element {
@@ -172,6 +246,14 @@
     margin: 0 762px 60px 200px;
 }
 
+
+@media screen and (max-width: 767px) {
+    .footer {
+        max-width: 284px;
+        margin: 48px auto 46px;
+    }
+}
+
 .footer__copyrights {
     font-family: 'Inter';
     font-style: normal;
@@ -180,25 +262,13 @@
     line-height: 22px;
     color: #545454;
     margin: 0;
-}
-
-
-/* СДЕЛАЙ МЕДИА ЗАПРОС НА ВСЕ РАЗРЕШЕНИЯ */
-@media screen and (max-width: 1279px) {
-    .footer__copyrights {
-        max-width: 1024px;
-    }
-}
-
-@media screen and (max-width: 1023px) {
-  .footer__copyrights {
-    max-width: 768px;
-  }
+    max-width: 318px;
 }
 
 @media screen and (max-width: 767px) {
     .footer__copyrights {
-        max-width: 320px;
+        font-size: 14px;
+        line-height: 17px
     }
 }
 
@@ -226,17 +296,34 @@
     width: 430px;
 }
 
+@media screen and (max-width: 767px) {
+    .popup__container {
+        width: 282px;
+        height: 322px;  
+    }
+}
+
 .popup__exit {
     border: 0;
     position: absolute;
     background-color: transparent;
-    background: url('../../images/Крестик.svg') contain no-repeat;
+    background: url('../../images/Крестик.svg') center no-repeat;
     cursor: pointer;
     padding: 0;
     width: 32px;
     height: 32px;
     top: -40px;
     right: -40px;
+    background-size: contain;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__exit {
+        top: -40px;
+        right: 0;
+        width: 20px;
+        height: 20px;
+    }
 }
 
 .popup__exit:hover {
@@ -253,6 +340,14 @@
     margin: 34px 64px 0 36px;
 }
 
+@media screen and (max-width: 767px) {
+    .popup__header {
+        margin: 25px 22px 75px 22px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
+
 .popup__input {
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
@@ -261,6 +356,12 @@
     height: 28px;
     font-size: 14px;
     line-height: 17px;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__input {
+        width: 238px;  
+    }
 }
 
 .popup__input:focus {
@@ -278,6 +379,13 @@
     margin-top: 54px;
 }
 
+@media screen and (max-width: 767px) {
+    .popup__input_name {
+        margin-left: 22px;
+        margin-top: 0; 
+    }
+}
+
 .popup__input_description {
     font-family: 'Inter';
     font-style: normal;
@@ -289,11 +397,15 @@
     margin-top: 30px;
 }
 
+@media screen and (max-width: 767px) {
+    .popup__input_description {
+        margin-left: 22px;
+    }
+}
+
 .popup__edit {
     background-color: rgba(0, 0, 0);
     padding: 0;
-    font-weight: 400;
-    text-align: center;
     color: #fff;
     margin: 48px 36px 37px;
     border-radius: 2px;
@@ -301,8 +413,24 @@
     border: none;
     width: 358px;
     min-height: 50px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
     font-size: 18px;
     line-height: 22px;
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__edit {
+        width: 238px;
+        min-height: 46px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        margin: 45px 22px 25px;
+    }
 }
 
 .popup__edit:hover {
