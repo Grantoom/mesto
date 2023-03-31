@@ -4,7 +4,7 @@
     height: 19px;
     cursor: pointer;
     background: url('../../../images/Сердце.svg') center no-repeat;
-    flex-shrink: 0
+    flex-shrink: 0;
     
 }
 
