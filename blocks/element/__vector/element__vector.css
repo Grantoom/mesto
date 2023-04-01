@@ -5,10 +5,12 @@
     cursor: pointer;
     background: url('../../../images/Сердце.svg') center no-repeat;
     flex-shrink: 0;
-    
+    background-size: cover;
+    background-color: transparent;
 }
 
 .element__vector:hover {
-    opacity: .6;
+    opacity: .5;
+    transition: opacity .5s ease-in-out;
 }
 
