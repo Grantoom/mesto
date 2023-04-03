@@ -7,6 +7,17 @@
     gap: 20px 17px;
 }
 
+@media screen and (max-width: 1023px) {
+    .elements {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        row-gap: 40px;
+        max-width: 650px;
+    }
+  }
+
 @media screen and (max-width: 767px) {
     .elements {
         grid-template-columns: 1fr;

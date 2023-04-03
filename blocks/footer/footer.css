@@ -3,6 +3,17 @@
     margin: 0 762px 60px 200px;
 }
 
+@media screen and (max-width: 1279px) {
+    .footer {
+        margin-left: 70px;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+  .footer {
+    margin: 0 378px 60px 70px;
+  }
+}
 
 @media screen and (max-width: 767px) {
     .footer {

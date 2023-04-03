@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pages/index.css">
-    <title>Mesto</title>
+    <title>Место</title>
 </head>
 <body class="root">
 
@@ -19,81 +19,81 @@
     
             <section class="profile">
 
-                <img src="images/Жак.jpg" alt="Фотография Жака-Ив Кусто" class="profile__avatar">
+                <img src="images/Man.jpg" alt="Портрет мужчины" class="profile__avatar">
 
                 <div class="profile__info">
                     <h1 class="profile__section-title">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button"></button>
-                    <p class="profile__section-subtitle">Исследователь океана</p>
+                    <button class="profile__edit-button" type="button" aria-label="Edit"></button>
+                    <h2 class="profile__section-subtitle">Исследователь океана</h2>
                 </div>
 
                 <button class="profile__add-button"></button>
             </section>
     
-            <section class="elements">
+            <section class="elements" aria-label="Photos">
 
                 <div class="element">
 
-                    <img src="images/Карачаевск.jpg" alt="Фото Карачаевска" class="element__img">
+                    <img src="images/karachaevsk.jpg" alt="Фото Карачаевска" class="element__img">
 
                    <div class="element__description">
-                        <p class="element__text">Карачаевск</p>
-                        <button class="element__vector"></button>
+                        <h2 class="element__text">Карачаевск</h2>
+                        <button class="element__vector" type="button"></button>
                    </div>
 
                 </div>
 
                 <div class="element">
 
-                    <img src="images/Гора Эльбрус.png" alt="Фото горы Эльбрус" class="element__img">
+                    <img src="images/Elbrus.png" alt="Фото горы Эльбрус" class="element__img">
 
                     <div class="element__description">
-                        <p class="element__text">Гора Эльбрус</p>
-                        <button class="element__vector"></button>
-                   </div>
-                    
-                </div>
-
-                <div class="element">
-
-                    <img src="images/Домбай.png" alt="Фото Домбай" class="element__img">
-
-                    <div class="element__description">
-                        <p class="element__text">Домбай</p>
-                        <button class="element__vector"></button>
+                        <h2 class="element__text">Гора Эльбрус</h2>
+                        <button class="element__vector" type="button"></button>
                    </div>
                     
                 </div>
 
                 <div class="element">
 
-                    <img src="images/Екб.jpg" alt="Фото Екатеринбурга" class="element__img">
+                    <img src="images/Domay.png" alt="Фото Домбай" class="element__img">
 
                     <div class="element__description">
-                        <p class="element__text">Екатеринбург</p>
-                        <button class="element__vector"></button>
+                        <h2 class="element__text">Домбай</h2>
+                        <button class="element__vector" type="button"></button>
                    </div>
                     
                 </div>
 
                 <div class="element">
 
-                    <img src="images/Швейцария.jpg" alt="Фото Швейцарии" class="element__img">
+                    <img src="images/Ekb.jpg" alt="Фото Екатеринбурга" class="element__img">
 
                     <div class="element__description">
-                        <p class="element__text">Швейцария</p>
-                        <button class="element__vector"></button>
+                        <h2 class="element__text">Екатеринбург</h2>
+                        <button class="element__vector" type="button"></button>
                    </div>
                     
                 </div>
 
                 <div class="element">
 
-                    <img src="images/Карачаево-Черкессия.jpg" alt="Фото Карачаево-Черкессии" class="element__img">
+                    <img src="images/swestaria.jpg" alt="Фото Швейцарии" class="element__img">
 
                     <div class="element__description">
-                        <p class="element__text">Карачаево-Черкессия</p>
-                        <button class="element__vector"></button>
+                        <h2 class="element__text">Швейцария</h2>
+                        <button class="element__vector" type="button"></button>
+                   </div>
+                    
+                </div>
+
+                <div class="element">
+
+                    <img src="images/Karachaevo.jpg" alt="Фото Карачаево-Черкессии" class="element__img">
+
+                    <div class="element__description">
+                        <h2 class="element__text">Карачаево-Черкессия</h2>
+                        <button class="element__vector" type="button"></button>
                    </div>
                     
                 </div>
@@ -103,29 +103,28 @@
         </main>
     
         <footer class="footer">
-            <h2 class="footer__copyrights">&copy; 2023 Mesto Russia</h2>
+            <p class="footer__copyrights" lang="en">&copy; 2023 Mesto Russia</p>
         </footer>
 
     </div>
 
     <div class="popup">
 
+        <form class="form" name="editor">
+            <input class="popup__input pop-up__input_role_name" placeholder="Имя" name="name" type="text">
+            <input class="popup__input pop-up__input_role_about" placeholder="О себе" name="about" type="text">
+            <button class="popup__edit" type="submit">Сохранить</button>
+        </form>
+
         <div class="popup__container">
 
             <button class="popup__exit" type="button"></button>
             <h2 class="popup__header">Редактировать профиль</h2>
 
-            <form class="form" name="editor">
-                <input class="popup__input popup__input_name" placeholder="Имя" name="name" type="text">
-                <input class="popup__input popup__input_description" placeholder="О себе" name="about" type="text">
-                <button class="popup__edit" type="submit">Сохранить</button>
-            </form>
-
         </div>
 
     </div>
 
-    <script src="scripts/like__button.js"></script>
-    <script src="scripts/popup__form.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
 </html>
