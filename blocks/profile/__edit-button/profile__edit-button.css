@@ -3,10 +3,10 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
-    border-color: rgba(255, 255, 255, 1);
     background-size: 10px 10px;
-    border: solid 1px #fff;
-    background-color: rgba(28, 28, 28, 0);
+    border: 1px solid #fff;
+    background-color: transparent;
+    transition: opacity .5s ease-in-out;
 }
 
 @media screen and (max-width: 767px) {
@@ -19,5 +19,4 @@
 
 .profile__edit-button:hover {
     opacity: .6;
-    transition: opacity .5s ease-in-out;
 }
