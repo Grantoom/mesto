@@ -7,10 +7,10 @@
     flex-shrink: 0;
     background-size: cover;
     background-color: transparent;
+    transition: opacity .5s ease-in-out;
 }
 
 .element__vector:hover {
     opacity: .5;
-    transition: opacity .5s ease-in-out;
 }
 

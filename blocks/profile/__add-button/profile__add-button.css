@@ -1,7 +1,6 @@
 .profile__add-button {
     height: 50px;
     width: 150px;
-    border-color: rgba(255, 255, 255, 1);
     cursor: pointer;
     background-size: 22px 22px;
     border: 2px solid #fff;
@@ -9,12 +8,11 @@
     background: url('../../../images/plus.svg') center no-repeat;
     background-color: transparent;
     margin-left: 244px;
-
+    transition: opacity .5s ease-in-out;
 }
 
 .profile__add-button:hover {
     opacity: .6;
-    transition: opacity .5s ease-in-out;
 }
 
 @media screen and (max-width: 1023px) {
