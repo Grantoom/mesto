@@ -30,3 +30,48 @@ editor.addEventListener('submit', handleFormSubmit);
 closeBtn.addEventListener('click', function () {
     popup.classList.remove('popup_opened');
 })
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+
+//контейнер
+  const cardContainer = document.querySelector('.cardsPlace');
+//
+  const cardTemplate = document.querySelector('#card-template').content;
+
+
+    initialCards.forEach ((item) => {
+    // клонируем содержимое тега template
+    const cardsElement = cardTemplate.querySelector('.element').cloneNode(true);
+
+    // наполняем содержимым
+    cardsElement.querySelector('.element__img').src = item.link;
+    cardsElement.querySelector('.element__text').textContent = item.name;
+
+    // отображаем на странице
+    cardContainer.append(cardsElement);
+    })

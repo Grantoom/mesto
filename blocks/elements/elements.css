@@ -1,4 +1,4 @@
-.elements {
+.cardsPlace {
     max-width: 880px;
     margin: 50px auto 66px;
     display: grid;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 1023px) {
-    .elements {
+    .cardsPlace {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -18,7 +18,7 @@
   }
 
 @media screen and (max-width: 767px) {
-    .elements {
+    .cardsPlace {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 1fr);
         justify-items: center;
