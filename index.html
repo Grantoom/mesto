@@ -31,9 +31,7 @@
                 
             </section>
     
-            <section class="cardsPlace" aria-label="Фотографии">
-
-            </section>
+            <section class="cardsPlace" aria-label="Фотографии"></section>
     
         </main>
     
@@ -43,25 +41,46 @@
 
     </div>
 
-    <div class="popup">
-
+    <div class="popup popup_edit-profile">
         <div class="popup__container">
 
-            <button class="popup__exit" type="button"></button>
+            <button class="popup__exit popup__exit_editProfile" type="button"></button>
             <h2 class="popup__header">Редактировать профиль</h2>
-            <form class="popup__form" name="editor">
-                <input class="popup__input popup__input_role_name" placeholder="Имя" name="name" type="text">
-                <input class="popup__input popup__input_role_about" placeholder="О себе" name="about" type="text">
-                <button class="popup__edit" type="submit">Сохранить</button>
+            <form class="popup__form popup__form_edit-profile" name="profileEditor">
+                <input class="popup__input popup__input_role_name" placeholder="Имя" name="nameEditProfile" type="text">
+                <input class="popup__input popup__input_role_about" placeholder="О себе" name="aboutEditProfile" type="text">
+                <button class="popup__edit popup__submit-button_edit-profile" type="submit">Сохранить</button>
             </form>
 
         </div>
+    </div>
 
+    <div class="popup popup_add-photo">
+        <div class="popup__container">
+
+            <button class="popup__exit popup__exit_add-photo" type="button"></button>
+            <h2 class="popup__header">Новое место</h2>
+            <form class="popup__form popup__form_add-photo" name="cardsEditor">
+                <input  id="name"class="popup__input popup__input_NameCard"  placeholder="Название" name="nameAddPhoto" type="text" >
+                <input id="link" class="popup__input popup__input_UrlCard" placeholder="Ссылка на картинку" name="linkAddPhoto" type="url">
+                <button class="popup__submit-button popup__submit-button_add-photo" type="submit">Сохранить</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="popup popup-image">
+        <div class="pop-up-image__container">
+            <img class="popup__exit pop-up-image__closeBtn" src="" alt="кнопка закрытия">
+            <img class="pop-up-image__pic" alt="">
+            <p class="pop-up-image__title"></p>
+        </div>
     </div>
 
     <template id="card-template"> 
         <div class="element">
 
+            <button class="element__trash" type="button"></button>
             <img alt="Фото Карачаевска" class="element__img">
 
            <div class="element__description">
