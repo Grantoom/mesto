@@ -42,11 +42,13 @@ function handleFormSubmit(evt) {
 };
 
 profileEditor.addEventListener('submit', handleFormSubmit);
-cardsEditor.addEventListener('submit', handleCardSubmut);
+
 
 closeBtnProfile.addEventListener('click', () => {
   popup_editProfile.classList.remove('popup_opened');
 });
+
+cardsEditor.addEventListener('submit', handleCardSubmut);
 
 closeBtnPhoto.addEventListener('click', () => {
   popup_addPhoto.classList.remove('popup_opened');
