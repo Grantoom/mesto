@@ -82,33 +82,34 @@ const initialCards = [
   showCards ();
 
   function handleCardSubmit(evt) {
-    const nameInput = document.querySelector('#name');
-    const linkInput = document.querySelector('#link');
-    
-    evt.preventDefault();
-    
-    const item = {
-    name: nameInput.value,
-    link: linkInput.value
-    }
-    initialCards.unshift(item);
-    showCards();
-    
-    if (nameInput.value.length > 0 && linkInput.value.length > 0) {
-      nameInput.setAttribute("placeholder");
-      linkInput.setAttribute("placeholder");
-    popup_addPhoto.classList.remove('popup_opened');
-    } else {
-      nameInput.setAttribute("placeholder");
-      linkInput.setAttribute("placeholder");
-    }
-    }
-    
-    cardsEditor.addEventListener('submit', handleCardSubmit);
-    
-    closeBtnPhoto.addEventListener('click', () => {
-    popup_addPhoto.classList.remove('popup_opened');
-    });
+  const nameInput = document.querySelector('#name');
+  const linkInput = document.querySelector('#link');
+  
+  evt.preventDefault();
+  
+  const item = {
+  name: nameInput.value,
+  link: linkInput.value
+  }
+  
+  if (nameInput.value.length > 0 && linkInput.value.length > 0) {
+  initialCards.unshift(item);
+  showCards();
+  nameInput.value = "";
+  linkInput.value = "";
+  popup_addPhoto.classList.remove('popup_opened'); // закрытие формы
+  } else {
+  nameInput.setAttribute("placeholder");
+  linkInput.setAttribute("placeholder");
+  }
+  }
+  
+  cardsEditor.addEventListener('submit', handleCardSubmit);
+  
+  closeBtnPhoto.addEventListener('click', () => {
+  popup_addPhoto.classList.remove('popup_opened');
+  });
+  
     
 
   function showCards () {
