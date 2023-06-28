@@ -10,6 +10,7 @@
     top: -40px;
     right: -40px;
     background-size: cover;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
 @media screen and (max-width: 767px) {
