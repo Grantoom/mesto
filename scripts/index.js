@@ -12,6 +12,7 @@ const closeBtnProfile = document.querySelector('.popup__exit_editProfile');
 const closeBtnPhoto = document.querySelector('.popup__exit_add-photo');
 const popup = document.querySelector('.popup');
 
+const deleteBtn = document.querySelector('.element__trash');
 
 
 const addCardsBtn = document.querySelector('.profile__add-button');
@@ -43,15 +44,8 @@ function handleFormSubmit(evt) {
 
 profileEditor.addEventListener('submit', handleFormSubmit);
 
-
 closeBtnProfile.addEventListener('click', () => {
   popup_editProfile.classList.remove('popup_opened');
-});
-
-cardsEditor.addEventListener('submit', handleCardSubmut);
-
-closeBtnPhoto.addEventListener('click', () => {
-  popup_addPhoto.classList.remove('popup_opened');
 });
 
 
@@ -88,21 +82,37 @@ const initialCards = [
 
   showCards ();
 
-    function handleCardSubmut (evt) {
-      
-      const nameInput = document.querySelector('#name');
-      const linkInput = document.querySelector('#link');
-
-      evt.preventDefault();
-
-      const item = {
-        name: nameInput.value,
-        link: linkInput.value
-      }
-      initialCards.unshift(item);
-      showCards();
-
-    };
+  function handleCardSubmit(evt) {
+  const nameInput = document.querySelector('#name');
+  const linkInput = document.querySelector('#link');
+  
+  evt.preventDefault();
+  
+  const item = {
+  name: nameInput.value,
+  link: linkInput.value
+  }
+  
+  if (nameInput.value.length > 0 && linkInput.value.length > 0) {
+  initialCards.unshift(item);
+  showCards();
+  nameInput.value = "";
+  linkInput.value = "";
+  popup_addPhoto.classList.remove('popup_opened'); // закрытие формы
+  } else {
+  nameInput.setAttribute("placeholder");
+  linkInput.setAttribute("placeholder");
+  }
+  }
+  
+  cardsEditor.addEventListener('submit', handleCardSubmit);
+  
+  closeBtnPhoto.addEventListener('click', () => {
+  popup_addPhoto.classList.remove('popup_opened');
+  });
+  
+  
+    
 
   function showCards () {
 
@@ -120,13 +130,20 @@ const initialCards = [
       cardsElement.querySelector('.element__vector').addEventListener('click', (e) => {
         e.target.classList.toggle('element__vector_active')
     });
+
+    cardsElement.querySelector('.element__trash').addEventListener('click', deleteItem);
   
-      // отображаем на странице
       return cardsElement;
 
       });
+      
 
       cardContainer.replaceChildren(...cards);
 
   }
-  
+
+  function deleteItem(evt) {
+    const deleteBtn = evt.target;
+    const cardElement = deleteBtn.closest('.element');
+    cardElement.remove();
+  }
