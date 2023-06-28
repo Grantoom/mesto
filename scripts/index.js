@@ -12,6 +12,7 @@ const closeBtnProfile = document.querySelector('.popup__exit_editProfile');
 const closeBtnPhoto = document.querySelector('.popup__exit_add-photo');
 const popup = document.querySelector('.popup');
 
+const deleteBtn = document.querySelector('.element__trash');
 
 
 const addCardsBtn = document.querySelector('.profile__add-button');
@@ -110,6 +111,7 @@ const initialCards = [
   popup_addPhoto.classList.remove('popup_opened');
   });
   
+  
     
 
   function showCards () {
@@ -128,12 +130,20 @@ const initialCards = [
       cardsElement.querySelector('.element__vector').addEventListener('click', (e) => {
         e.target.classList.toggle('element__vector_active')
     });
+
+    cardsElement.querySelector('.element__trash').addEventListener('click', deleteItem);
   
-      // отображаем на странице
       return cardsElement;
 
       });
+      
 
       cardContainer.replaceChildren(...cards);
 
+  }
+
+  function deleteItem(evt) {
+    const deleteBtn = evt.target;
+    const cardElement = deleteBtn.closest('.element');
+    cardElement.remove();
   }
