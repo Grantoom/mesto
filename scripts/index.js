@@ -137,8 +137,8 @@ let cards = initialCards.map((item) => {
   cardsElement.querySelector('.element__img').addEventListener('click', (e) => {
     if (!popupPhoto.classList.contains('popup_opened')) {
     popupImg.src = e.target.src;
+    popupTitle.textContent = item.name;
     popupPhoto.classList.add('popup_opened');
-    
     
     } else {
     popupPhoto.classList.remove('popup_opened');
@@ -150,8 +150,6 @@ let cards = initialCards.map((item) => {
       popupPhoto.classList.remove('popup_opened');
     });
     
-    
-  
 
   return cardsElement;
 
