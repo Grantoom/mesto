@@ -10,8 +10,6 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    visibility: hidden;
-    opacity: 0;
     transition: opacity 0.8s linear;
 }
 
