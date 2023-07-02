@@ -64,13 +64,13 @@ function openPopup(item) {
   renderCard(cardElement);
   }
   
-  closeBtn.forEach ((item) => {
+  closeBtn.forEach((item) => {
   item.addEventListener("click", function () {
   closePopup(item.closest(".popup"));
   });
   });
   
-  function handlelikeACard(e) {
+  function handleLikeACard(e) {
   const like = e.target;
   like.classList.toggle("element__vector_active");
   }
@@ -97,7 +97,7 @@ function openPopup(item) {
   });
   imgElement.addEventListener("click", () => openPopupCard(link, name));
   const cardLike = cardElement.querySelector(".element__vector");
-  cardLike.addEventListener("click", handlelikeACard);
+  cardLike.addEventListener("click", handleLikeACard);
   }
   
   initialCards.reverse().forEach(function (item) {
