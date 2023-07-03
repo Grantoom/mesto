@@ -51,11 +51,6 @@ function handleFormSubmitCard(e) {
 
 formCardAdd.addEventListener('submit', handleFormSubmitCard);
 
-function handleLikeACard(e) {
-  const like = e.target;
-  like.classList.toggle('element__vector_active');
-}
-
 function createCard(name, link) {
   const cardElement = templateElement.cloneNode(true);
   const textElement = cardElement.querySelector('.element__text');
@@ -64,6 +59,8 @@ function createCard(name, link) {
   imgElement.src = link;
   imgElement.alt = name;
   addEventListeners(imgElement, cardElement, name, link);
+  cardElement.querySelector('.element__vector').addEventListener('click', (e) => { 
+    e.target.classList.toggle('element__vector_active') });
   return cardElement;
 }
 
@@ -79,7 +76,7 @@ function addEventListeners(imgElement, cardElement, name, link) {
 
   imgElement.addEventListener('click', () => openPopupCard(link, name));
   const cardLike = cardElement.querySelector('.element__vector');
-  cardLike.addEventListener('click', handleLikeACard);
+  cardLike.addEventListener('click', createCard);
 }
 
 function initializeCards() {
