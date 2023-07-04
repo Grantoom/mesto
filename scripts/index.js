@@ -53,16 +53,11 @@ formCardAdd.addEventListener('submit', handleFormSubmitCard);
 
 function createCard(name, link) {
   const cardElement = templateElement.cloneNode(true);
-  const textElement = cardElement.querySelector('.element__text');
-  const imgElement = cardElement.querySelector('.element__img');
-  textElement.textContent = name;
-  imgElement.src = link;
-  imgElement.alt = name;
-  addEventListeners(imgElement, cardElement, name, link);
-  cardElement.querySelector('.element__vector').addEventListener('click', (e) => { 
-    e.target.classList.toggle('element__vector_active') });
+  cardElement.querySelector('.element__img').src = link;
+  cardElement.querySelector('.element__text').textContent = name;
+  addEventListeners(cardElement.querySelector('.element__img'), cardElement, name, link);
   return cardElement;
-}
+  }
 
 function renderCard(cardElement) {
   cardListElement.prepend(cardElement);
@@ -73,10 +68,6 @@ function addEventListeners(imgElement, cardElement, name, link) {
   buttonDelElement.addEventListener('click', function () {
   cardElement.remove();
   });
-
-  imgElement.addEventListener('click', () => openPopupCard(link, name));
-  const cardLike = cardElement.querySelector('.element__vector');
-  cardLike.addEventListener('click', createCard);
 }
 
 function initializeCards() {
@@ -114,3 +105,10 @@ closeBtn.forEach((item) => {
   closePopup(item.closest('.popup'));
   });
 });
+
+const like = document.querySelectorAll('.element__vector');
+like.forEach(like => { 
+  like.addEventListener('click', (e) => { 
+      like.classList.toggle('element__vector_active'); 
+      })
+});  
