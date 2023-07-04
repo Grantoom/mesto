@@ -68,6 +68,10 @@ function addEventListeners(imgElement, cardElement, name, link) {
   buttonDelElement.addEventListener('click', function () {
   cardElement.remove();
   });
+
+  imgElement.addEventListener('click', () => openPopupCard(link, name));
+  const cardLike = cardElement.querySelector('.element__vector');
+  cardLike.addEventListener('click', createCard);
 }
 
 function initializeCards() {
@@ -94,6 +98,7 @@ function openPopupAdd() {
 openAddPopupButton.addEventListener('click', openPopupAdd);
 
 function openPopupCard(img, title) {
+  
   popupImg.src = img;
   popupImg.alt = title;
   popupTitle.textContent = title;
