@@ -35,7 +35,7 @@ function setProfile() {
 function handleFormSubmitProfile(e) {
   e.preventDefault();
   setProfile();
-  closePopup(e.target.closest('.popup'));
+  closePopup(popupEditCard);
 }
 
 formProfile.addEventListener('submit', handleFormSubmitProfile);
@@ -45,7 +45,7 @@ function handleFormSubmitCard(e) {
   const valueName = cardsName.value;
   const valueUrl = cardsDescription.value;
   const cardElement = createCard(valueName, valueUrl);
-  closePopup(e.target.closest('.popup'));
+  closePopup(popupAddPhoto);
   renderCard(cardElement);
 }
 
