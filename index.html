@@ -43,13 +43,19 @@
 
     <div class="popup popup_edit-profile">
         <div class="popup__container">
-
             <button class="popup__exit" type="button"></button>
+
             <h2 class="popup__header">Редактировать профиль</h2>
-            <form class="popup__form popup__form_edit-profile" name="inputProfile">
-                <input class="popup__input popup__input_role_name" placeholder="Имя" name="nameEditProfile" type="text" required minlength="2" maxlength="40">
-                <input class="popup__input popup__input_role_about" placeholder="О себе" name="aboutEditProfile" type="text" required minlength="2" maxlength="200">
-                <button class="popup__submit-button popup__submit-button_edit-profile" type="submit">Сохранить</button>
+            <form class="popup__form popup__form_edit-profile" name="inputProfile" novalidate>
+                    <label class="popup__label">
+                        <input class="popup__input popup__input_role_name" placeholder="Имя" name="nameEditProfile" type="text" required minlength="2" maxlength="40">
+                        <span id="username-error" class="error_visible"></span>
+                    </label>
+                    <label class="popup__label">
+                        <input class="popup__input popup__input_role_about" placeholder="О себе" name="aboutEditProfile" type="text" required minlength="2" maxlength="200">
+                         <span id="job-error" class="error_visible"></span>
+                    </label>
+                    <button class="popup__submit-button popup__submit-button_edit-profile" type="submit">Сохранить</button>
             </form>
 
         </div>
@@ -57,13 +63,19 @@
 
     <div class="popup popup_add-photo">
         <div class="popup__container">
-
             <button class="popup__exit" type="button"></button>
+
             <h2 class="popup__header">Новое место</h2>
-            <form class="popup__form popup__form_add-photo" name="inputCard">
-                <input  id="name" class="popup__input popup__input_NameCard"  placeholder="Название" name="nameAddPhoto" type="text" required  minlength="2" maxlength="40">
-                <input id="link" class="popup__input popup__input_UrlCard" placeholder="Ссылка на картинку" name="linkAddPhoto" required  type="url">
-                <button class="popup__submit-button popup__submit-button_add-photo" type="submit">Создать</button>
+            <form class="popup__form popup__form_add-photo" name="inputCard" novalidate>
+                    <label class="popup__label">
+                        <input  id="name" class="popup__input popup__input_NameCard"  placeholder="Название" name="nameAddPhoto" type="text" required  minlength="2" maxlength="30">
+                        <span id="name-error" class="error_visible"></span>
+                    </label>
+                    <label class="popup__label">
+                        <input id="link" class="popup__input popup__input_UrlCard" placeholder="Ссылка на картинку" name="linkAddPhoto" required  type="url">
+                        <span id="link-error" class="error_visible"></span>
+                    </label>
+                    <button class="popup__submit-button popup__submit-button_add-photo" type="submit">Создать</button>
             </form>
 
         </div>
@@ -91,6 +103,7 @@
         </div>
     </template>
 
+    <script type="module" src="./scripts/validate.js"></script>
     <script type="module" src="./scripts/cards.js"></script>
     <script type="module" src="./scripts/index.js"></script>
 </body>
