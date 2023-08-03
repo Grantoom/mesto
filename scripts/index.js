@@ -120,3 +120,15 @@ closeBtn.forEach((item) => {
     closePopup(item.closest('.popup'));
   });
 });
+
+function closeOverlay() {
+  document.querySelectorAll(".popup").forEach((item) =>
+    item.addEventListener("click", (e) => {
+      if (e.target.classList.contains("popup")) {
+        closePopup(e.target);
+      }
+    })
+  );
+}
+
+closeOverlay();
