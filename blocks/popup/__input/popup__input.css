@@ -1,17 +1,19 @@
 .popup__input {
-    font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    color: #000000;
-    margin-left: 36px;
-    margin-top: 30px;
-    border: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, .2);
-    padding-bottom: 13px;
-    width: 358px;
+    line-height: 16.94px;
     font-size: 14px;
-    line-height: 17px;
-}
+    font-weight: 400;
+    font-family: "Inter", "Arial ", sans-serif;
+    border: none;
+    background-color: #fff;
+    min-height: 27px;
+    max-width: 358px;
+    width: 100%;
+    color: #000;
+    margin-top: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0;
+    padding-bottom: 5px;
+  }
 
 @media screen and (max-width: 767px) {
     .popup__input {

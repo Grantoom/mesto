@@ -20,11 +20,20 @@ const cardsName = document.querySelector('.popup__input_NameCard');
 const cardsDescription = document.querySelector('.popup__input_UrlCard');
 
 function openPopup(item) {
-  item.classList.add('popup_opened');
+  item.classList.add("popup_opened");
+  document.addEventListener("keydown", handleKeydownPopupClose);
 }
 
 function closePopup(popup) {
-  popup.classList.remove('popup_opened');
+  popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", handleKeydownPopupClose);
+}
+
+function handleKeydownPopupClose(evt) {
+  if (evt.key === "Escape") {
+    const item = document.querySelector(".popup_opened");
+    closePopup(item);
+  }
 }
 
 function setProfile() {
@@ -111,3 +120,15 @@ closeBtn.forEach((item) => {
     closePopup(item.closest('.popup'));
   });
 });
+
+function closeOverlay() {
+  document.querySelectorAll(".popup").forEach((item) =>
+    item.addEventListener("click", (e) => {
+      if (e.target.classList.contains("popup")) {
+        closePopup(e.target);
+      }
+    })
+  );
+}
+
+closeOverlay();

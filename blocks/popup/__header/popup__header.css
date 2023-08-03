@@ -1,17 +1,16 @@
 .popup__header {
-    font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
-    font-style: normal;
-    font-weight: 900;
+    line-height: 29.05px;
     font-size: 24px;
-    line-height: 29px;
-    color: #000;
-    margin: 34px 64px 24px 36px;
-}
-
-@media screen and (max-width: 767px) {
+    font-weight: 900;
+    font-family: "Inter", "Arial ", sans-serif;
+    color: black;
+    margin: 0 0 44px;
+  }
+  
+  @media screen and (max-width: 470px) {
     .popup__header {
-        margin: 25px 22px 45px 22px;
-        font-size: 18px;
-        line-height: 22px;
+      line-height: 21.78px;
+      font-size: 18px;
+      margin: 0 0 45px;
     }
-}
+  }
