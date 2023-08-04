@@ -4,7 +4,7 @@ const validate = {
     submitButtonSelector: ".popup__submit-button",
     inactiveButtonClass: "popup__save_invalid",
     inputErrorClass: "popup__input_type_error",
-    errorClass: "error_visible",
+    errorClass: "popup__error_visible",
   };
   
   const showError = (inputElement, errorMessage) => {
@@ -48,24 +48,36 @@ const validate = {
   const setEventListener = (formElement) => {
     const inputList = Array.from(formElement.querySelectorAll(validate.inputSelector));
     const submitButtonElement = formElement.querySelector(validate.submitButtonSelector);
+
     toggleButtonState(submitButtonElement, formElement.checkValidity());
     inputList.forEach(function (inputElement) {
       inputElement.addEventListener("input", function () {
         toggleButtonState(submitButtonElement, formElement.checkValidity());
         checkInputValidity(inputElement, formElement);
       });
+    
+      inputElement.addEventListener("paste", function () {
+        toggleButtonState(submitButtonElement, formElement.checkValidity());
+        checkInputValidity(inputElement, formElement);
+      });
+    
+      inputElement.addEventListener("change", function () {
+        toggleButtonState(submitButtonElement, formElement.checkValidity());
+        checkInputValidity(inputElement, formElement);
+      });
     });
+    
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
       if (!formElement.checkValidity()) return;
     });
   }
   
-  const enableValidation = (validationConfig) => {
+    const enableValidation = (validationConfig) => {
     const formsList = Array.from(document.querySelectorAll(validationConfig.formSelector));
     formsList.forEach(function (formElement) {
       setEventListener(formElement);
     });
   }
   
-  enableValidation(validate);
+  enableValidation(validate); 
