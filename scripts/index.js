@@ -1,4 +1,5 @@
 import {initialCards} from './cards.js';
+import { enableValidation } from './validate.js';
 
 const popupEditCard = document.querySelector('.popup_edit-profile');
 const popupAddPhoto = document.querySelector('.popup_add-photo');
@@ -55,15 +56,20 @@ function handleFormSubmitCard(e) {
   e.preventDefault();
   const valueName = cardsName.value;
   const valueUrl = cardsDescription.value;
+  
+  if (valueName && valueUrl) {
   const cardElement = createCard(valueName, valueUrl);
   closePopup(popupAddPhoto);
-  renderCard(cardElement);
-
-  cardsName.value = ""; 
+  renderCard(cardElement, "#template-elements");
+  cardsName.value = "";
   cardsDescription.value = "";
-
+  }
+  
   enableValidation(validate);
-}
+  
+  const submitButton = document.querySelector('.popup__submit-button');
+  submitButton.disabled = true;
+  }
 
 
 formCardAdd.addEventListener('submit', handleFormSubmitCard);

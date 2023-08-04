@@ -81,3 +81,5 @@ const validate = {
   }
   
   enableValidation(validate); 
+
+  export { enableValidation };
