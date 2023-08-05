@@ -1,4 +1,4 @@
-const validate = { 
+export const validate = { 
   formSelector: ".popup__form", 
   inputSelector: ".popup__input", 
   submitButtonSelector: ".popup__submit-button", 
@@ -12,12 +12,12 @@ const showError = (inputElement, errorMessage) => {
   errorMessage.textContent = inputElement.validationMessage; 
 }; 
  
-const hideError = (inputElement, errorMessage) => { 
+export const hideError = (inputElement, errorMessage) => { 
   inputElement.classList.remove(validate.inputErrorClass); 
   errorMessage.textContent = ""; 
 }; 
  
-const checkInputValidity = (inputElement, formElement) => { 
+ export function checkInputValidity (inputElement, formElement) { 
   const isInputValid = inputElement.validity.valid; 
   const errorMessage = formElement.querySelector(`#${inputElement.id}-error`); 
   if (!isInputValid) { 
@@ -26,8 +26,9 @@ const checkInputValidity = (inputElement, formElement) => {
     hideError(inputElement, errorMessage); 
   } 
 }; 
+
  
- const disableButton = (buttonElement) => { 
+  function disableButton(buttonElement)  { 
   buttonElement.disabled = true; 
   buttonElement.classList.add(validate.inactiveButtonClass); 
 } 
@@ -37,7 +38,7 @@ const enableButton = (buttonElement) => {
   buttonElement.classList.remove(validate.inactiveButtonClass); 
 } 
  
- const toggleButtonState = (buttonElement, isActive) => { 
+  export function toggleButtonState (buttonElement, isActive) { 
   if (!isActive) { 
     disableButton(buttonElement); 
   } else { 
@@ -45,7 +46,7 @@ const enableButton = (buttonElement) => {
   } 
 } 
  
-const setEventListener = (formElement) => { 
+export function setEventListener (formElement) { 
   const inputList = Array.from(formElement.querySelectorAll(validate.inputSelector)); 
   const submitButtonElement = formElement.querySelector(validate.submitButtonSelector); 
 
