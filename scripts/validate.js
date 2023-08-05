@@ -27,7 +27,7 @@ const checkInputValidity = (inputElement, formElement) => {
   } 
 }; 
  
-export const disableButton = (buttonElement) => { 
+ const disableButton = (buttonElement) => { 
   buttonElement.disabled = true; 
   buttonElement.classList.add(validate.inactiveButtonClass); 
 } 
@@ -37,7 +37,7 @@ const enableButton = (buttonElement) => {
   buttonElement.classList.remove(validate.inactiveButtonClass); 
 } 
  
-export const toggleButtonState = (buttonElement, isActive) => { 
+ const toggleButtonState = (buttonElement, isActive) => { 
   if (!isActive) { 
     disableButton(buttonElement); 
   } else { 
@@ -63,10 +63,10 @@ const setEventListener = (formElement) => {
   }); 
 } 
  
- export const enableValidation = (validationConfig) => { 
+  const enableValidation = (validationConfig) => { 
   const formsList = Array.from(document.querySelectorAll(validationConfig.formSelector)); 
   formsList.forEach(function (formElement) { 
-    setEventListener(formElement); 
+    setEventListener(formElement, validationConfig); 
   }); 
 } 
  
