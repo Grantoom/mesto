@@ -1,6 +1,4 @@
 import {initialCards} from './cards.js'; 
-import {disableButton} from './validate.js';
-import {enableValidation} from './validate.js';
 
 const popupEditCard = document.querySelector('.popup_edit-profile'); 
 const popupAddPhoto = document.querySelector('.popup_add-photo'); 
@@ -31,6 +29,11 @@ function openPopup(item) {
 function closePopup(popup) { 
   popup.classList.remove("popup_opened"); 
   document.removeEventListener("keydown", handleKeydownPopupClose); 
+  if (popup === popupEditCard) {
+    formProfile.reset();
+  } else if (popup === popupAddPhoto) {
+    formCardAdd.reset();
+  }
 } 
  
 function handleKeydownPopupClose(evt) { 
@@ -108,11 +111,10 @@ function initializeCards() {
  
 initializeCards(); 
  
-function openEditPopup() { 
-  nameInput.value = profileName.textContent; 
-  aboutInput.value = profileAbout.textContent; 
-  openPopup(popupEditCard); 
-} 
+function openEditPopup() {
+  openPopup(popupEditCard);
+  formProfile.reset();
+}
  
 openPopupEditButton.addEventListener('click', openEditPopup); 
  
