@@ -27,7 +27,6 @@ export const hideError = (inputElement, errorMessage) => {
   } 
 }; 
 
- 
   function disableButton(buttonElement)  { 
   buttonElement.disabled = true; 
   buttonElement.classList.add(validate.inactiveButtonClass); 
