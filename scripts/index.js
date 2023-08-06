@@ -26,8 +26,6 @@ const cardsDescription = document.querySelector('.popup__input_UrlCard');
 function openPopup(item) { 
   item.classList.add("popup_opened"); 
   document.addEventListener("keydown", handleKeydownPopupClose); 
-  cardsName.value = "";
-  cardsDescription.value = ""
 } 
  
 function closePopup(popup) { 
@@ -127,6 +125,8 @@ openPopupEditButton.addEventListener('click', openEditPopup);
 function openPopupAdd() { 
   openPopup(popupAddPhoto); 
   initalValidate(popupAddPhoto);
+  cardsName.value = "";
+  cardsDescription.value = ""
 } 
  
 openAddPopupButton.addEventListener('click', openPopupAdd); 
