@@ -22,23 +22,17 @@ const templateElement = document.querySelector('#card-template').content.querySe
 const cardsName = document.querySelector('.popup__input_NameCard'); 
 const cardsDescription = document.querySelector('.popup__input_UrlCard'); 
  
- 
- 
+
 function openPopup(item) { 
   item.classList.add("popup_opened"); 
   document.addEventListener("keydown", handleKeydownPopupClose); 
- 
+  cardsName.value = "";
+  cardsDescription.value = ""
 } 
  
 function closePopup(popup) { 
   popup.classList.remove("popup_opened"); 
   document.removeEventListener("keydown", handleKeydownPopupClose); 
-  if (popup === popupEditCard) {
-    formProfile.reset();
-  } else if (popup === popupAddPhoto) {
-    formCardAdd.reset();
-  }
-
 } 
  
 function handleKeydownPopupClose(evt) { 
@@ -67,14 +61,11 @@ function handleFormSubmitCard(e) {
   const valueUrl = cardsDescription.value;
 
   if (valueName && valueUrl) {
-  const cardElement = createCard(valueName, valueUrl);
-  closePopup(popupAddPhoto);
-  renderCard(cardElement, "#template-elements");
-  cardsName.value = "";
-  cardsDescription.value = "";
+    const cardElement = createCard(valueName, valueUrl);
+    closePopup(popupAddPhoto);
+    renderCard(cardElement, "#template-elements");
+    }
   }
-
-}
  
 formCardAdd.addEventListener('submit', handleFormSubmitCard); 
  
