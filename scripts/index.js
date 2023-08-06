@@ -106,6 +106,7 @@ function openEditPopup() {
   nameInput.value = profileName.textContent; 
   aboutInput.value = profileAbout.textContent; 
   openPopup(popupEditCard);
+  initalValidate(popupEditCard);
 }
 
 function initalValidate(formElement) {
