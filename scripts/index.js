@@ -125,8 +125,7 @@ openPopupEditButton.addEventListener('click', openEditPopup);
 function openPopupAdd() { 
   openPopup(popupAddPhoto); 
   initalValidate(popupAddPhoto);
-  cardsName.value = "";
-  cardsDescription.value = ""
+  formCardAdd.reset();
 } 
  
 openAddPopupButton.addEventListener('click', openPopupAdd); 
