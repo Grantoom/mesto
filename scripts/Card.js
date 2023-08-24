@@ -1,45 +1,50 @@
 export default class Card {
   constructor(name, link, selectorTemplate, handleCardClick) {
-    this.name = name;
-    this.link = link;
-    this.templateElement = document
+    this._name = name;
+    this._link = link;
+    this._handleCardClick = handleCardClick;
+
+    this._templateElement = document
       .querySelector(selectorTemplate)
       .content.querySelector(".element");
-    this._createCard();
-    this.handleCardClick = handleCardClick;
+
+    this._cardElement = this._createCard();
   }
 
   _createCard() {
-    this.cardElement = this.templateElement.cloneNode(true);
-    const textElement = this.cardElement.querySelector(".element__text");
-    this.imgElement = this.cardElement.querySelector(".element__img");
-    this.buttonDelElement = this.cardElement.querySelector(".element__trash");
-    this.cardLike = this.cardElement.querySelector(".element__vector");
-    textElement.textContent = this.name;
-    this.imgElement.src = this.link;
-    this.imgElement.alt = this.name;
-    this._addCardEvent();
-    return this.cardElement;
+    const cardElement = this._getTemplateElement().cloneNode(true);
+    const textElement = cardElement.querySelector(".element__text");
+    this._imgElement = cardElement.querySelector(".element__img");
+    this._buttonDelElement = cardElement.querySelector(".element__trash");
+    this._cardLike = cardElement.querySelector(".element__vector");
+    textElement.textContent = this._name;
+    this._imgElement.src = this._link;
+    this._imgElement.alt = this._name;
+    this._addCardEvents();
+    return cardElement;
+  }
+
+  _getTemplateElement() {
+    return this._templateElement;
   }
 
   _removeCard() {
-    this.cardElement.remove();
+    this._cardElement.remove();
   }
 
   _likeCard(evt) {
-    const like = evt.target;
-    like.classList.toggle("element__vector_active");
+    this._cardLike.classList.toggle("element__vector_active");
   }
 
-  _addCardEvent() {
-    this.buttonDelElement.addEventListener("click", this._removeCard.bind(this));
-    this.imgElement.addEventListener("click", () =>
-      this.handleCardClick(this.link, this.name)
+  _addCardEvents() {
+    this._buttonDelElement.addEventListener("click", this._removeCard.bind(this));
+    this._imgElement.addEventListener("click", () =>
+      this._handleCardClick(this._link, this._name)
     );
-    this.cardLike.addEventListener("click", this._likeCard.bind(this));
+    this._cardLike.addEventListener("click", this._likeCard.bind(this));
   }
-  
+
   returnCard() {
-    return this.cardElement;
+    return this._cardElement;
   }
 }
