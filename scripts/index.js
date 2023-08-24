@@ -1,7 +1,6 @@
-import {initialCards} from './cards.js'; 
-import {validate} from './validate.js';
-import {toggleButtonState} from './validate.js'
-import {hideError} from './validate.js';
+import initialCards from './initialCards.js'; 
+import FormValidator from './FormValidator.js';
+import Card from './Card.js';
 
 const popupEditCard = document.querySelector('.popup_edit-profile'); 
 const popupAddPhoto = document.querySelector('.popup_add-photo'); 
@@ -22,6 +21,20 @@ const templateElement = document.querySelector('#card-template').content.querySe
 const cardsName = document.querySelector('.popup__input_NameCard'); 
 const cardsDescription = document.querySelector('.popup__input_UrlCard'); 
  
+const config = { 
+  formSelector: ".popup__form", 
+  inputSelector: ".popup__input", 
+  submitButtonSelector: ".popup__submit-button", 
+  inactiveButtonClass: "popup__save_invalid", 
+  inputErrorClass: "popup__input_type_error", 
+  errorClass: "popup__error_visible", 
+}; 
+
+const validProfile = new FormValidator(config, formProfile);
+validProfile.enableValidation();
+const validCard = new FormValidator(config, formCardAdd);
+validCard.enableValidation();
+
 
 function openPopup(item) { 
   item.classList.add("popup_opened"); 
