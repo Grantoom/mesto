@@ -69,4 +69,13 @@ export default class FormValidator {
       this.hideError(inputElement, errorElement);
     }
   }
+  
+  clearErrors() {
+    this.formsList.forEach((inputElement) => {
+      const errorElement = this.form.querySelector(`#${inputElement.id}-error`);
+      this.hideError(inputElement, errorElement);
+    });
+    
+    this.toggleButtonState(false);
+  }
 }
