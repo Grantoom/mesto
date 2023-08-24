@@ -1,4 +1,4 @@
-import initialCards from "./initialCards.js";
+import { initialCards, config } from "./constants.js";
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
 
@@ -19,15 +19,6 @@ const popupImg = popupPhoto.querySelector(".popup-image__pic");
 const popupTitle = popupPhoto.querySelector(".popup-image__title");
 const cardsName = document.querySelector("#name");
 const cardsDescription = document.querySelector("#link");
-
-const config = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: "popup__save_invalid",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-};
 
 const validProfile = new FormValidator(config, formProfile);
 validProfile.enableValidation();
@@ -69,11 +60,9 @@ function handleFormSubmitCard(e) {
   const valueName = cardsName.value;
   const valueUrl = cardsDescription.value;
 
-  if (valueName && valueUrl) {
-    const cardElement = createCard(valueName, valueUrl, "#card-template");
-    closePopup(popupAddPhoto);
-    renderCard(cardElement.returnCard());
-  }
+  const cardElement = createCard(valueName, valueUrl, "#card-template");
+  renderCard(cardElement.returnCard());
+  closePopup(popupAddPhoto);
 }
 
 formCardAdd.addEventListener("submit", handleFormSubmitCard);
@@ -87,9 +76,11 @@ function openAndValidate(popup, validatorInstance) {
     nameInput.value = profileName.textContent;
     aboutInput.value = profileAbout.textContent;
   }
-  validatorInstance.clearErrors();
+  validatorInstance.resetValidationState();
   openPopup(popup);
-  formCardAdd.reset();
+  if (popup === popupAddPhoto) {
+    formCardAdd.reset();
+  }
 }
 
 openPopupEditButton.addEventListener("click", () =>
@@ -109,12 +100,12 @@ function openPopupCard(img, title) {
 
 function createCard(name, value, dir) {
   const cardElement = new Card(name, value, dir, openPopupCard);
-  renderCard(cardElement.returnCard());
   return cardElement;
 }
 
 initialCards.reverse().forEach(function (item) {
-  createCard(item.name, item.link, "#card-template");
+  const cardElement = createCard(item.name, item.link, "#card-template");
+  renderCard(cardElement.returnCard());
 });
 
 closeBtnList.forEach((item) => {
