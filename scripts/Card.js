@@ -4,9 +4,8 @@ export default class Card {
     this._link = link;
     this._handleCardClick = handleCardClick;
 
-    this._templateElement = document
-      .querySelector(selectorTemplate)
-      .content.querySelector(".element");
+    this._selectorTemplate = selectorTemplate;
+    this._templateElement = this._getTemplateElement();
 
     this._cardElement = this._createCard();
   }
@@ -25,7 +24,7 @@ export default class Card {
   }
 
   _getTemplateElement() {
-    return this._templateElement;
+    return document.querySelector(this._selectorTemplate).content.querySelector(".element");
   }
 
   _removeCard() {
