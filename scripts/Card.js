@@ -9,7 +9,6 @@ export default class Card {
 
     this._cardElement = this._createCard();
   }
-  
 
   _createCard() {
     const cardElement = this._getTemplateElement().cloneNode(true);
@@ -23,8 +22,6 @@ export default class Card {
     this._addCardEvents();
     return cardElement;
   }
-
- 
 
   _getTemplateElement() {
     return document.querySelector(this._selectorTemplate).content.querySelector(".element");
