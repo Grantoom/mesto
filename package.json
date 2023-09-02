@@ -1,0 +1,26 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "1. Методология разработки БЭМ. HTML и CSS файлы выполнены по методолгии БЭМ;\r 2. Файловая структура оформлена по технологии Nested;\r 3. Адаптивная вёрстка с использованием технологий Flex-box & Grid-box;\r 4. Псевдоклассы;\r 5. Интерактивность благодаря JavaScript;\r 6. ООП, ES6 Modules;\r 7. Подготовлена инфраструктура приложения на Webpack;",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grantoom/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grantoom/mesto/issues"
+  },
+  "homepage": "https://github.com/Grantoom/mesto#readme",
+  "dependencies": {
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
