@@ -1,7 +1,9 @@
 import { initialCards, config } from "./utils/constants.js";
 import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
-import './pages/index.css'; 
+import './pages/index.css';
+
+
 
 const popupEditCard = document.querySelector(".popup_edit-profile");
 const popupAddPhoto = document.querySelector(".popup_add-photo");
