@@ -29,7 +29,12 @@ export default class Card {
   }
 
   _removeCard() {
+    this._buttonDelElement.removeEventListener("click", this._buttonDelClickHandler);
+    this._imgElement.removeEventListener("click", this._imgClickHandler);
+    this._cardLike.removeEventListener("click", this._cardLikeClickHandler);
+
     this._cardElement.remove();
+    this._cardElement = null;
   }
 
   _likeCard() {
@@ -37,9 +42,13 @@ export default class Card {
   }
 
   _addCardEvents() {
-    this._buttonDelElement.addEventListener("click", () => this._removeCard());
-    this._imgElement.addEventListener("click", () => this._handleCardClick(this._link, this._name));
-    this._cardLike.addEventListener("click", () => this._likeCard());
+    this._buttonDelClickHandler = () => this._removeCard();
+    this._imgClickHandler = () => this._handleCardClick(this._link, this._name);
+    this._cardLikeClickHandler = () => this._likeCard();
+
+    this._buttonDelElement.addEventListener("click", this._buttonDelClickHandler);
+    this._imgElement.addEventListener("click", this._imgClickHandler);
+    this._cardLike.addEventListener("click", this._cardLikeClickHandler);
   }
 
   getCard() {
