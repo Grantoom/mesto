@@ -4,6 +4,7 @@ import Card from "./components/Card.js";
 import Section from "./components/Section.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
+import UserInfo from "./components/UserInfo.js"; 
 import './pages/index.css';
 
 const popupEditCard = document.querySelector(".popup_edit-profile");
@@ -12,10 +13,13 @@ const popupPhoto = document.querySelector(".popup-image");
 const formProfile = document.querySelector(".popup__form_edit-profile");
 const formCardAdd = document.querySelector(".popup__form_add-photo");
 const openPopupEditButton = document.querySelector(".profile__edit-button");
-const profileName = document.querySelector(".profile__section-title");
-const profileAbout = document.querySelector(".profile__section-subtitle");
 const openAddPopupButton = document.querySelector(".profile__add-button");
 const cardListElement = document.querySelector(".cardsPlace");
+
+const userInfo = new UserInfo({
+  userNameSelector: '.profile__section-title',
+  userAboutSelector: '.profile__section-subtitle'
+});
 
 const validProfile = new FormValidator(config, formProfile);
 validProfile.enableValidation();
@@ -33,8 +37,7 @@ addCardPopup.setEventListeners();
 const cardsSection = new Section(renderCard, cardListElement);
 
 function handleFormSubmitProfile(formData) {
-  profileName.textContent = formData.username;
-  profileAbout.textContent = formData.job;
+  userInfo.setUserInfo(formData);
   profilePopup.close();
 }
 
@@ -64,7 +67,7 @@ initialCards.reverse().forEach(function (item) {
 });
 
 openPopupEditButton.addEventListener("click", () => {
-  profilePopup.setInputValues({ username: profileName.textContent, job: profileAbout.textContent });
+  profilePopup.setInputValues(userInfo.getUserInfo());
   validProfile.resetValidationState();
   profilePopup.open();
 });
