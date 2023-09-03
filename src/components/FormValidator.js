@@ -67,13 +67,13 @@ export default class FormValidator {
       this._hideError(inputElement, errorElement);
     }
   }
-  
+
   resetValidationState() {
     this._inputsList.forEach((inputElement) => {
       const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
       this._hideError(inputElement, errorElement);
     });
-    
+
     this._disableButton();
   }
 }
