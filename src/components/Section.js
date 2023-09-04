@@ -12,10 +12,14 @@ export default class Section {
   }
 
   addItem(element) {
-    this._container.append(element);
+    this._container.prepend(element);
   }
 
-  prependItem(element) {
-    this._container.prepend(element);
+  closeAllCards() {
+    this._container.querySelectorAll(".element").forEach((cardElement) => {
+      const card = new Card();
+      card._cardElement = cardElement;
+      card.closeCard();
+    });
   }
 }
