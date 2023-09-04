@@ -37,8 +37,8 @@ const cardsSection = new Section({
   items: initialCards,
   renderer: (item) => {
     const card = createCard(item.name, item.link, "#card-template");
-    const cardElement = card.generateCard();
-    cardsSection.addItem(cardElement);
+    const cardElement = card.generateCard(); 
+    cardsSection.addItem(cardElement); 
   }
 }, ".cardsPlace");
 
