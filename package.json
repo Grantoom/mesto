@@ -4,7 +4,7 @@
   "description": "1. Методология разработки БЭМ. HTML и CSS файлы выполнены по методолгии БЭМ;\r 2. Файловая структура оформлена по технологии Nested;\r 3. Адаптивная вёрстка с использованием технологий Flex-box & Grid-box;\r 4. Псевдоклассы;\r 5. Интерактивность благодаря JavaScript;\r 6. ООП, ES6 Modules;\r 7. Подготовлена инфраструктура приложения на Webpack;",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack --mode development",
     "dev": "webpack serve"
   },
   "repository": {
