@@ -16,4 +16,3 @@ export default class UserInfo {
       this._aboutElement.textContent = about;
     }
   }
-  
