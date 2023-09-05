@@ -55,13 +55,16 @@ openPopupEditButton.addEventListener("click", () => {
 
   nameInput.value = userData.name;
   aboutInput.value = userData.about;
+  validProfile.resetValidationState();
   editProfilePopup.open();
+  editProfilePopup.resetForm();
 });
 
 openAddPopupButton.addEventListener("click", () => {
   addPhotoPopup.open();
+  validCard.resetValidationState();
+  addPhotoPopup.resetForm();
 });
-
 
 const validProfile = new FormValidator(config, document.querySelector(".popup__form_edit-profile")); 
 const validCard = new FormValidator(config, document.querySelector(".popup__form_add-photo")); 
