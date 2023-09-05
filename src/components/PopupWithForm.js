@@ -21,7 +21,17 @@ export default class PopupWithForm extends Popup {
       evt.preventDefault();
       this._submitCallback(this._getInputValues());
       this.close();
-      this.resetValidationState();
+      this.resetValidation();
     });
   }
+
+  resetForm() {
+    this._form.reset();
+  }
+  
+  resetValidation() {
+    if (this._submitCallback.resetValidation) {
+      this._submitCallback.resetValidation();
+    }
+  }  
 }
