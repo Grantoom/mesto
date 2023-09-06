@@ -1,4 +1,4 @@
-import { initialCards, config, openPopupEditButton, openAddPopupButton, nameInput, aboutInput } from "./utils/constants.js";
+import { initialCards, config, editProfileButton, addPhotoButton, nameInputField, aboutInputField } from "./utils/constants.js";
 import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
 import Section from "./components/Section.js";
@@ -45,17 +45,17 @@ const addPhotoPopup = new PopupWithForm(".popup_add-photo", ({ nameAddPhoto, lin
 editProfilePopup.setEventListeners();
 addPhotoPopup.setEventListeners();
 
-openPopupEditButton.addEventListener("click", () => {
+editProfileButton.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
 
-  nameInput.value = userData.name;
-  aboutInput.value = userData.about;
+  nameInputField.value = userData.name;
+  aboutInputField.value = userData.about;
   validProfile.resetValidationState();
   editProfilePopup.open();
   editProfilePopup.resetForm();
 });
 
-openAddPopupButton.addEventListener("click", () => {
+addPhotoButton.addEventListener("click", () => {
   addPhotoPopup.open();
   validCard.resetValidationState();
   addPhotoPopup.resetForm();
