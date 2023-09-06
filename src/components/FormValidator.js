@@ -4,6 +4,8 @@ export default class FormValidator {
     this._formElement = formElement;
     this._inputsList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
     this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
+  
+    this._initialInputValues = this._inputsList.map((inputElement) => inputElement.value);
   }
 
   _showError(inputElement, errorElement) {
@@ -32,7 +34,11 @@ export default class FormValidator {
   }
 
   _toggleButtonState() {
-    if (this._hasInvalidInput()) {
+    const isInputValuesChanged = this._inputsList.some(
+      (inputElement, index) => inputElement.value !== this._initialInputValues[index]
+    );
+  
+    if (this._hasInvalidInput() || !isInputValuesChanged) {
       this._buttonElement.setAttribute("disabled", true);
       this._buttonElement.classList.add(this._config.inactiveButtonClass);
     } else {
@@ -40,7 +46,7 @@ export default class FormValidator {
       this._buttonElement.classList.remove(this._config.inactiveButtonClass);
     }
   }
-
+  
   resetValidationState() {
     this._inputsList.forEach((inputElement) => {
       const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
