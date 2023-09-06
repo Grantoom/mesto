@@ -33,6 +33,11 @@ export default class FormValidator {
     return this._inputsList.some((inputElement) => !inputElement.validity.valid);
   }
 
+  updateInitialInputValues() {
+    this._initialInputValues = this._inputsList.map((inputElement) => inputElement.value);
+    this._toggleButtonState();
+  }
+  
   _toggleButtonState() {
     if (this._hasInvalidInput() || !this._isInputValuesChanged()) {
       this._buttonElement.setAttribute("disabled", true);
