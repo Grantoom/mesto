@@ -50,14 +50,12 @@ editProfileButton.addEventListener("click", () => {
 
   nameInputField.value = userData.name;
   aboutInputField.value = userData.about;
+
+  validProfile.updateInitialInputValues();
   validProfile.resetValidationState();
 
-  validProfile._toggleButtonState(); 
-
   editProfilePopup.open();
-  editProfilePopup.resetForm();
 });
-
 
 addPhotoButton.addEventListener("click", () => {
   addPhotoPopup.open();

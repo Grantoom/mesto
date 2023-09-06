@@ -33,12 +33,13 @@ export default class FormValidator {
     return this._inputsList.some((inputElement) => !inputElement.validity.valid);
   }
 
-  _toggleButtonState() {
-    const isInputValuesChanged = this._inputsList.some(
-      (inputElement, index) => inputElement.value !== this._initialInputValues[index]
-    );
+  updateInitialInputValues() {
+    this._initialInputValues = this._inputsList.map((inputElement) => inputElement.value);
+    this._toggleButtonState();
+  }
   
-    if (this._hasInvalidInput() || !isInputValuesChanged) {
+  _toggleButtonState() {
+    if (this._hasInvalidInput() || !this._isInputValuesChanged()) {
       this._buttonElement.setAttribute("disabled", true);
       this._buttonElement.classList.add(this._config.inactiveButtonClass);
     } else {
@@ -46,6 +47,12 @@ export default class FormValidator {
       this._buttonElement.classList.remove(this._config.inactiveButtonClass);
     }
   }
+  
+  _isInputValuesChanged() {
+    return this._inputsList.some(
+      (inputElement, index) => inputElement.value !== this._initialInputValues[index]
+    );
+  }  
   
   resetValidationState() {
     this._inputsList.forEach((inputElement) => {
