@@ -51,9 +51,13 @@ editProfileButton.addEventListener("click", () => {
   nameInputField.value = userData.name;
   aboutInputField.value = userData.about;
   validProfile.resetValidationState();
+
+  validProfile._toggleButtonState(); 
+
   editProfilePopup.open();
   editProfilePopup.resetForm();
 });
+
 
 addPhotoButton.addEventListener("click", () => {
   addPhotoPopup.open();
@@ -61,8 +65,8 @@ addPhotoButton.addEventListener("click", () => {
   addPhotoPopup.resetForm();
 });
 
-const validProfile = new FormValidator(config, document.querySelector(".popup__form_edit-profile")); 
-const validCard = new FormValidator(config, document.querySelector(".popup__form_add-photo")); 
+const validProfile = new FormValidator(config, document.querySelector(".popup__form_edit-profile"));
+const validCard = new FormValidator(config, document.querySelector(".popup__form_add-photo"));
 
 validProfile.enableValidation();
 validCard.enableValidation();
