@@ -1,4 +1,4 @@
-import { initialCards, config } from "./utils/constants.js";
+import { initialCards, config, openPopupEditButton, openAddPopupButton, nameInput, aboutInput } from "./utils/constants.js";
 import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
 import Section from "./components/Section.js";
@@ -6,9 +6,6 @@ import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
 import UserInfo from "./components/UserInfo.js";
 import "./pages/index.css";
-
-const openPopupEditButton = document.querySelector(".profile__edit-button");
-const openAddPopupButton = document.querySelector(".profile__add-button");
 
 const userInfo = new UserInfo({
   userNameSelector: ".profile__section-title",
@@ -50,8 +47,6 @@ addPhotoPopup.setEventListeners();
 
 openPopupEditButton.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
-  const nameInput = document.querySelector("#username");
-  const aboutInput = document.querySelector("#job");
 
   nameInput.value = userData.name;
   aboutInput.value = userData.about;
