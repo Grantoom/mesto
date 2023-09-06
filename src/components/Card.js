@@ -4,24 +4,29 @@ export default class Card {
     this._link = link;
     this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
-
+  
+    this._buttonDelElement = null;
+    this._imgElement = null;
+    this._cardLike = null;
+  
     this._cardElement = this._createCard();
   }
-
+  
   _createCard() {
     const cardElement = this._getTemplateElement().content.querySelector(".element").cloneNode(true);
     const textElement = cardElement.querySelector(".element__text");
     const imgElement = cardElement.querySelector(".element__img");
-    this._imgElement = imgElement;
-    this._buttonDelElement = cardElement.querySelector(".element__trash");
-    this._cardLike = cardElement.querySelector(".element__vector");
   
     textElement.textContent = this._name;
     imgElement.src = this._link;
     imgElement.alt = this._name;
+    
+    this._imgElement = imgElement;
+    this._buttonDelElement = cardElement.querySelector(".element__trash");
+    this._cardLike = cardElement.querySelector(".element__vector");
   
     this._addCardEvents();
-  
+    
     return cardElement;
   }
   
