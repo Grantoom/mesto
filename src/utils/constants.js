@@ -34,9 +34,9 @@ const config = {
   errorClass: "popup__error_visible",
 };
 
-const editProfileButton = document.querySelector(".profile__edit-button");
-const addPhotoButton = document.querySelector(".profile__add-button");
+const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
+const buttonAddPopupProfile = document.querySelector(".profile__add-button"); 
 const nameInputField = document.querySelector("#username");
 const aboutInputField = document.querySelector("#job");
 
-export { initialCards, config, editProfileButton, addPhotoButton, nameInputField, aboutInputField };
+export { initialCards, config, buttonOpenPopupProfile, buttonAddPopupProfile, nameInputField, aboutInputField };
