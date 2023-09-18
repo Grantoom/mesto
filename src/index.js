@@ -15,7 +15,7 @@ import "./pages/index.css";
 //     'Content-Type': 'application/json'
 // }});
 
-// const myId = await api.getUserID()
+
 
 const confirmDeletePopup = new PopupWithConfirmation(".popup_type_delete-card", () => {
   const cardToDelete = confirmDeletePopup.cardToDelete;
