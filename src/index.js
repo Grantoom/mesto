@@ -4,6 +4,7 @@ import Card from "./components/Card.js";
 import Section from "./components/Section.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
+import PopupWithConfirmation from "./components/PopupWithConfirmation.js";
 import UserInfo from "./components/UserInfo.js";
 import "./pages/index.css";
 
@@ -15,6 +16,35 @@ import "./pages/index.css";
 // }});
 
 // const myId = await api.getUserID()
+
+const confirmDeletePopup = new PopupWithConfirmation(".popup_type_delete-card", () => {
+  const cardToDelete = confirmDeletePopup.cardToDelete;
+  if (cardToDelete) {
+      cardToDelete._removeCard();
+  }
+  confirmDeletePopup.close();
+});
+
+
+const buttonAvatarPopupProfile = document.querySelector(".profile__avatar-edit-button");
+
+const popupAvatar = new PopupWithForm(".popup_type_avatar", ({ avatar }) => {
+  document.querySelector(".profile__avatar").src = avatar;
+});
+
+popupAvatar.setEventListeners();
+
+buttonAvatarPopupProfile.addEventListener("click", () => {
+  
+  popupAvatar.open();
+});
+
+const deleteCardPopup = new PopupWithForm(".popup_type_delete-card", () => {
+  cardToRemove.remove();
+  deleteCardPopup.close();
+});
+deleteCardPopup.setEventListeners();
+
 
 const userInfo = new UserInfo({
   userNameSelector: ".profile__section-title",
@@ -30,12 +60,23 @@ const cardSection = new Section({
 }, ".cardsPlace");
 
 function createCard(name, link) {
-  const card = new Card(name, link, "#card-template", (name, link) => {
-    popupWithImage.open(name, link);
-  });
-  const cardElement = card.generateCard(); 
+  const card = new Card(
+    name, 
+    link, 
+    "#card-template", 
+    (name, link) => {
+      popupWithImage.open(name, link);
+    },
+    (card) => {
+      confirmDeletePopup.cardToDelete = card;
+      confirmDeletePopup.open();
+    }
+  );
+  const cardElement = card.generateCard();
   return cardElement;
 }
+
+confirmDeletePopup.setEventListeners();
 
 const popupWithImage = new PopupWithImage(".popup-image");
 popupWithImage.setEventListeners();
