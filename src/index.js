@@ -4,6 +4,7 @@ import Card from "./components/Card.js";
 import Section from "./components/Section.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
+import PopupWithConfirmation from "./components/PopupWithConfirmation.js";
 import UserInfo from "./components/UserInfo.js";
 import "./pages/index.css";
 
@@ -16,6 +17,12 @@ import "./pages/index.css";
 
 // const myId = await api.getUserID()
 
+const confirmDeletePopup = new PopupWithConfirmation(".popup_type_delete-card", () => {
+  const cardToDelete = confirmDeletePopup.cardToDelete;
+  if (cardToDelete) {
+    cardToDelete._removeCard();
+  }
+});
 
 const buttonAvatarPopupProfile = document.querySelector(".profile__avatar-edit-button");
 
@@ -51,12 +58,23 @@ const cardSection = new Section({
 }, ".cardsPlace");
 
 function createCard(name, link) {
-  const card = new Card(name, link, "#card-template", (name, link) => {
-    popupWithImage.open(name, link);
-  });
-  const cardElement = card.generateCard(); 
+  const card = new Card(
+    name, 
+    link, 
+    "#card-template", 
+    (name, link) => {
+      popupWithImage.open(name, link);
+    },
+    (card) => {
+      confirmDeletePopup.cardToDelete = card;
+      confirmDeletePopup.open();
+    }
+  );
+  const cardElement = card.generateCard();
   return cardElement;
 }
+
+confirmDeletePopup.setEventListeners();
 
 const popupWithImage = new PopupWithImage(".popup-image");
 popupWithImage.setEventListeners();

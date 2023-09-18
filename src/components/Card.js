@@ -1,8 +1,9 @@
 export default class Card {
-  constructor(name, link, templateSelector, handleCardClick) {
+  constructor(name, link, templateSelector, handleCardClick, handleDeleteCard) { 
     this._name = name;
     this._link = link;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteCard = handleDeleteCard; 
     this._templateSelector = templateSelector;
   
     this._buttonDelElement = null;
@@ -39,9 +40,9 @@ export default class Card {
     this._imgElement.removeEventListener("click", this._imgClickHandler);
     this._cardLike.removeEventListener("click", this._cardLikeClickHandler);
 
-    this._cardElement.remove();
-    this._cardElement = null;
-  }
+    this._handleDeleteCard(this); // передайте this вместо 'this._removeCard()'
+}
+
 
   _likeCard() {
     this._cardLike.classList.toggle("element__vector_active");
