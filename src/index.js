@@ -39,9 +39,13 @@ buttonAvatarPopupProfile.addEventListener("click", () => {
 
 
 const deleteCardPopup = new PopupWithForm(".popup_type_delete-card", () => {
-  cardToRemove.remove();
+  const cardToDelete = confirmDeletePopup.cardToDelete;
+  if (cardToDelete) {
+    cardToDelete._removeCard(); 
+  }
   deleteCardPopup.close();
 });
+
 deleteCardPopup.setEventListeners();
 
 
