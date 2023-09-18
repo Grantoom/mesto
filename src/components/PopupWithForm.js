@@ -33,5 +33,10 @@ export default class PopupWithForm extends Popup {
     if (this._submitCallback.resetValidation) {
       this._submitCallback.resetValidation();
     }
-  }  
+  } 
+  
+  close() {
+    super.close();
+    this.resetForm();
+  }
 }
