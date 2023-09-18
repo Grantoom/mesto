@@ -48,3 +48,7 @@
 @import url(../blocks/popup/__save/popup__save.css);
 @import url(../blocks/popup/__save/_invalid/popup__save_invalid.css);
 @import url(../blocks/popup/__label/popup__label.css);
+
+@import url(../blocks/popup/__container-delete/popup__container-delete.css);
+@import url(../blocks/popup/__container-avatar/popup__container-avatar.css);
+@import url(../blocks/profile/__avatar-edit-button/profile__avatar-edit-button.css);
