@@ -65,7 +65,7 @@
 /*!***********************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__description/element__description.css ***!
   \***********************************************************************************************************************************************************************************/
-.element__description{align-items:center;display:flex;justify-content:space-between;margin:25px 15px 31px 21px;width:246px}
+.element__description{align-items:center;display:flex;justify-content:space-between;padding:25px 15px 31px 21px;width:246px}
 /*!*********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__text/element__text.css ***!
   \*********************************************************************************************************************************************************************/
@@ -166,6 +166,10 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-edit-button/profile__avatar-edit-button.css ***!
   \*************************************************************************************************************************************************************************************************/
 .profile__avatar-edit-button{background:none;border:none;border-radius:50%;height:120px;margin:0;padding:0;position:absolute;width:120px}.profile__avatar-edit-button:hover{background:url(a086f758840ae814ecde.svg);background-color:rgba(0,0,0,.9);background-position:50%;background-repeat:no-repeat;border:none;cursor:pointer;opacity:1}
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__like-count/element__like-count.css ***!
+  \*********************************************************************************************************************************************************************************/
+.element__like-count{bottom:13px;color:#000;flex-shrink:0;font-family:Inter;font-size:13px;font-style:normal;font-weight:400;height:13px;line-height:normal;margin:0;position:absolute;right:21px;text-align:center;width:10px}
 /*!*********************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/pages/index.css ***!
   \*********************************************************************************************************************************************/
