@@ -20,9 +20,11 @@ import "./pages/index.css";
 const confirmDeletePopup = new PopupWithConfirmation(".popup_type_delete-card", () => {
   const cardToDelete = confirmDeletePopup.cardToDelete;
   if (cardToDelete) {
-    cardToDelete._removeCard();
+      cardToDelete._removeCard();
   }
+  confirmDeletePopup.close();
 });
+
 
 const buttonAvatarPopupProfile = document.querySelector(".profile__avatar-edit-button");
 
