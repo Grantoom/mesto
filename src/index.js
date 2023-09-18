@@ -7,6 +7,15 @@ import PopupWithImage from "./components/PopupWithImage.js";
 import UserInfo from "./components/UserInfo.js";
 import "./pages/index.css";
 
+// const api = new Api({
+//   baseUrl: 'https://nomoreparties.co/v1/cohort-75',
+//   headers: {
+//     authorization: '97d17c4f-b130-485b-9ec0-eeb35e105a97',
+//     'Content-Type': 'application/json'
+// }});
+
+// const myId = await api.getUserID()
+
 const userInfo = new UserInfo({
   userNameSelector: ".profile__section-title",
   userAboutSelector: ".profile__section-subtitle",
