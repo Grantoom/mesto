@@ -16,6 +16,27 @@ import "./pages/index.css";
 
 // const myId = await api.getUserID()
 
+
+const buttonAvatarPopupProfile = document.querySelector(".profile__avatar-edit-button");
+
+const popupAvatar = new PopupWithForm(".popup_type_avatar", ({ avatar }) => {
+  document.querySelector(".profile__avatar").src = avatar;
+});
+
+popupAvatar.setEventListeners();
+
+buttonAvatarPopupProfile.addEventListener("click", () => {
+  
+  popupAvatar.open();
+});
+
+const deleteCardPopup = new PopupWithForm(".popup_type_delete-card", () => {
+  cardToRemove.remove();
+  deleteCardPopup.close();
+});
+deleteCardPopup.setEventListeners();
+
+
 const userInfo = new UserInfo({
   userNameSelector: ".profile__section-title",
   userAboutSelector: ".profile__section-subtitle",

@@ -84,14 +84,14 @@
 
   <div class="popup popup_type_avatar">
     <div class="popup__container-avatar">
-      <button class="popup__close" type="button"></button>
+      <button class="popup__exit" type="button"></button>
       <form class="popup__form popup__form_avatar" name="inputAvatar" novalidate>
-        <h3 class="popup__title">Обновить аватар</h3>
+        <h3 class="popup__header">Обновить аватар</h3>
         <label class="popup__label">
           <input class="popup__input popup__input_type_title" required type="url" name="avatar" placeholder="Введите ссылку на аватар" minlength="2" maxlength="200">
           <span id="avatar-error" class="error"></span>
         </label>
-        <button class="popup__save popup__save_type_avatar" type="submit">Сохранить</button>
+        <button class="popup__submit-button popup__save_type_avatar" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -99,7 +99,7 @@
   <div class="popup popup_type_delete-card">
    <div class="popup__container-delete">
       <form class="popup__form popup__form_delete" name="deleteCard">
-        <button class="popup__close" type="button"></button>
+        <button class="popup__exit" type="button"></button>
         <h3 class="popup__title">Вы уверены?</h3>
         <button class="popup__save popup__save_type_delete">Да</button>
       </form>
