@@ -15,8 +15,6 @@ import "./pages/index.css";
 //     'Content-Type': 'application/json'
 // }});
 
-// const myId = await api.getUserID()
-
 const confirmDeletePopup = new PopupWithConfirmation(".popup_type_delete-card", () => {
   const cardToDelete = confirmDeletePopup.cardToDelete;
   if (cardToDelete) {
@@ -35,9 +33,10 @@ const popupAvatar = new PopupWithForm(".popup_type_avatar", ({ avatar }) => {
 popupAvatar.setEventListeners();
 
 buttonAvatarPopupProfile.addEventListener("click", () => {
-  
+  validAvatar.resetValidationState(); 
   popupAvatar.open();
 });
+
 
 const deleteCardPopup = new PopupWithForm(".popup_type_delete-card", () => {
   cardToRemove.remove();
@@ -91,6 +90,11 @@ const addPhotoPopup = new PopupWithForm(".popup_add-photo", ({ nameAddPhoto, lin
   const cardElement = createCard(nameAddPhoto, linkAddPhoto);
   cardSection.addItem(cardElement);
 });
+
+
+const validAvatar = new FormValidator(config, document.querySelector(".popup__form_avatar"));
+
+validAvatar.enableValidation();
 
 editProfilePopup.setEventListeners();
 addPhotoPopup.setEventListeners();
