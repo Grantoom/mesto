@@ -92,6 +92,12 @@ const addPhotoPopup = new PopupWithForm(".popup_add-photo", ({ nameAddPhoto, lin
   cardSection.addItem(cardElement);
 });
 
+
+const validAvatar = new FormValidator(config, document.querySelector(".popup__form_avatar"));
+
+cardSection.renderItems();
+validAvatar.enableValidation();
+
 editProfilePopup.setEventListeners();
 addPhotoPopup.setEventListeners();
 
