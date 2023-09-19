@@ -7,13 +7,20 @@ import PopupWithImage from "./components/PopupWithImage.js";
 import PopupWithConfirmation from "./components/PopupWithConfirmation.js";
 import UserInfo from "./components/UserInfo.js";
 import "./pages/index.css";
+import Api from "./components/Api.js"
 
-// const api = new Api({
-//   baseUrl: 'https://nomoreparties.co/v1/cohort-75',
-//   headers: {
-//     authorization: '97d17c4f-b130-485b-9ec0-eeb35e105a97',
-//     'Content-Type': 'application/json'
-// }});
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-75',
+  headers: {
+    authorization: '97d17c4f-b130-485b-9ec0-eeb35e105a97',
+    'Content-Type': 'application/json'
+  }
+});
+
+function mergeInitialCards(loadedCards) {
+  const mergedCards = initialCards.concat(loadedCards);
+  return mergedCards;
+}
 
 const confirmDeletePopup = new PopupWithConfirmation(".popup_type_delete-card", () => {
   const cardToDelete = confirmDeletePopup.cardToDelete;
@@ -55,12 +62,20 @@ const userInfo = new UserInfo({
 });
 
 const cardSection = new Section({
-  items: initialCards,
+  items: [],
   renderer: (item) => {
     const cardElement = createCard(item.name, item.link);
     cardSection.addItem(cardElement);
   },
 }, ".cardsPlace");
+
+api.getCards()
+  .then((loadedCards) => {
+    const cardsData = mergeInitialCards(loadedCards);
+    cardSection.setItems(cardsData);
+    cardSection.renderItems();
+  })
+  .catch((err) => console.log(`Ошибка получения карточек: ${err}`));
 
 function createCard(name, link) {
   const card = new Card(
