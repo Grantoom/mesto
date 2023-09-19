@@ -17,6 +17,11 @@ const api = new Api({
   }
 });
 
+function mergeInitialCards(loadedCards) {
+  const mergedCards = initialCards.concat(loadedCards);
+  return mergedCards;
+}
+
 const confirmDeletePopup = new PopupWithConfirmation(".popup_type_delete-card", () => {
   const cardToDelete = confirmDeletePopup.cardToDelete;
   if (cardToDelete) {
@@ -65,12 +70,12 @@ const cardSection = new Section({
 }, ".cardsPlace");
 
 api.getCards()
-  .then((cardsArray) => {
-    cardSection.setItems(cardsArray);
+  .then((loadedCards) => {
+    const cardsData = mergeInitialCards(loadedCards);
+    cardSection.setItems(cardsData);
     cardSection.renderItems();
   })
   .catch((err) => console.log(`Ошибка получения карточек: ${err}`));
-
 
 function createCard(name, link) {
   const card = new Card(
