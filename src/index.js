@@ -30,7 +30,6 @@ const confirmDeletePopup = new PopupWithConfirmation(".popup_type_delete-card", 
   confirmDeletePopup.close();
 });
 
-
 const buttonAvatarPopupProfile = document.querySelector(".profile__avatar-edit-button");
 
 const popupAvatar = new PopupWithForm(".popup_type_avatar", ({ avatar }) => {
@@ -43,18 +42,6 @@ buttonAvatarPopupProfile.addEventListener("click", () => {
   validAvatar.resetValidationState(); 
   popupAvatar.open();
 });
-
-
-const deleteCardPopup = new PopupWithForm(".popup_type_delete-card", () => {
-  const cardToDelete = confirmDeletePopup.cardToDelete;
-  if (cardToDelete) {
-    cardToDelete._removeCard(); 
-  }
-  deleteCardPopup.close();
-});
-
-deleteCardPopup.setEventListeners();
-
 
 const userInfo = new UserInfo({
   userNameSelector: ".profile__section-title",
@@ -109,7 +96,6 @@ const addPhotoPopup = new PopupWithForm(".popup_add-photo", ({ nameAddPhoto, lin
   const cardElement = createCard(nameAddPhoto, linkAddPhoto);
   cardSection.addItem(cardElement);
 });
-
 
 const validAvatar = new FormValidator(config, document.querySelector(".popup__form_avatar"));
 
