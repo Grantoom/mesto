@@ -22,14 +22,6 @@ function mergeInitialCards(loadedCards) {
   return mergedCards;
 }
 
-const confirmDeletePopup = new PopupWithConfirmation(".popup_type_delete-card", () => {
-  const cardToDelete = confirmDeletePopup.cardToDelete;
-  if (cardToDelete) {
-      cardToDelete._removeCard();
-  }
-  confirmDeletePopup.close();
-});
-
 const buttonAvatarPopupProfile = document.querySelector(".profile__avatar-edit-button");
 
 const popupAvatar = new PopupWithForm(".popup_type_avatar", ({ avatar }) => {
@@ -42,6 +34,16 @@ buttonAvatarPopupProfile.addEventListener("click", () => {
   validAvatar.resetValidationState(); 
   popupAvatar.open();
 });
+
+const deleteCardPopup = new PopupWithConfirmation(".popup_type_delete-card", () => {
+  const cardToDelete = deleteCardPopup.cardToDelete;
+  if (cardToDelete) {
+      cardToDelete._removeCard();
+  }
+  deleteCardPopup.close();
+});
+
+deleteCardPopup.setEventListeners();
 
 const userInfo = new UserInfo({
   userNameSelector: ".profile__section-title",
@@ -66,22 +68,21 @@ api.getCards()
 
 function createCard(name, link) {
   const card = new Card(
-    name, 
-    link, 
-    "#card-template", 
+    name,
+    link,
+    "#card-template",
     (name, link) => {
       popupWithImage.open(name, link);
     },
     (card) => {
-      confirmDeletePopup.cardToDelete = card;
-      confirmDeletePopup.open();
+      deleteCardPopup.cardToDelete = card;
+      deleteCardPopup.open();
     }
   );
   const cardElement = card.generateCard();
   return cardElement;
 }
 
-confirmDeletePopup.setEventListeners();
 
 const popupWithImage = new PopupWithImage(".popup-image");
 popupWithImage.setEventListeners();
@@ -92,6 +93,7 @@ const editProfilePopup = new PopupWithForm(".popup_edit-profile", ({ nameEditPro
     about: aboutEditProfile,
   });
 });
+
 const addPhotoPopup = new PopupWithForm(".popup_add-photo", ({ nameAddPhoto, linkAddPhoto }) => {
   const cardElement = createCard(nameAddPhoto, linkAddPhoto);
   cardSection.addItem(cardElement);
