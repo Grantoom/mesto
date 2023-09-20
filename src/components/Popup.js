@@ -22,7 +22,7 @@ export default class Popup {
 
   setEventListeners() {
     this._popup.addEventListener("click", (evt) => {
-      if (evt.target.classList.contains("popup__exit") || evt.target.classList.contains("popup")) {
+      if (evt.target.classList.contains("popup__exit") || evt.target.classList.contains("popup_opened")) {
         this.close();
       }
     });
