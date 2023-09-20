@@ -24,8 +24,13 @@ function mergeInitialCards(loadedCards) {
 
 const buttonAvatarPopupProfile = document.querySelector(".profile__avatar-edit-button");
 
-const popupAvatar = new PopupWithForm(".popup_type_avatar", ({ avatar }) => {
-  document.querySelector(".profile__avatar").src = avatar;
+const popupAvatar = new PopupWithForm(".popup_type_avatar", (formData) => {
+  api.handleUserAvatar(formData)
+    .then((res) => {
+      document.querySelector(".profile__avatar").src = res.avatar;
+      popupAvatar.close();
+    })
+    .catch((err) => console.log(`Ошибка обновления аватара: ${err}`));
 });
 
 popupAvatar.setEventListeners();
@@ -48,6 +53,7 @@ deleteCardPopup.setEventListeners();
 const userInfo = new UserInfo({
   userNameSelector: ".profile__section-title",
   userAboutSelector: ".profile__section-subtitle",
+  userAvatarSelector: ".profile__avatar",
 });
 
 const cardSection = new Section({
@@ -87,16 +93,26 @@ function createCard(name, link) {
 const popupWithImage = new PopupWithImage(".popup-image");
 popupWithImage.setEventListeners();
 
-const editProfilePopup = new PopupWithForm(".popup_edit-profile", ({ nameEditProfile, aboutEditProfile }) => {
-  userInfo.setUserInfo({
-    name: nameEditProfile,
-    about: aboutEditProfile,
-  });
+const editProfilePopup = new PopupWithForm(".popup_edit-profile", (formData) => {
+  api.sendUserInfo(formData)
+    .then((res) => {
+      userInfo.setUserInfo({
+        name: res.name,
+        about: res.about,
+      });
+      editProfilePopup.close();
+    })
+    .catch((err) => console.log(`Ошибка редактирования профиля: ${err}`));
 });
 
-const addPhotoPopup = new PopupWithForm(".popup_add-photo", ({ nameAddPhoto, linkAddPhoto }) => {
-  const cardElement = createCard(nameAddPhoto, linkAddPhoto);
-  cardSection.addItem(cardElement);
+const addPhotoPopup = new PopupWithForm(".popup_add-photo", (formData) => {
+  api.createNewCard(formData)
+    .then((res) => {
+      const cardElement = createCard(res.name, res.link);
+      cardSection.addItem(cardElement);
+      addPhotoPopup.close();
+    })
+    .catch((err) => console.log(`Ошибка добавления места: ${err}`));
 });
 
 const validAvatar = new FormValidator(config, document.querySelector(".popup__form_avatar"));
