@@ -46,7 +46,11 @@ buttonAvatarPopupProfile.addEventListener("click", () => {
 const deleteCardPopup = new PopupWithConfirmation(".popup_type_delete-card", () => {
   const cardToDelete = deleteCardPopup.cardToDelete;
   if (cardToDelete) {
-    cardToDelete._removeCard();
+    api.deleteCard(cardToDelete.getId())
+      .then(() => {
+        cardToDelete._removeCard();
+      })
+      .catch((err) => console.log(`Ошибка удаления карточки: ${err}`));
   }
 });
 
