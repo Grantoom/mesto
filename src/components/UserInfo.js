@@ -14,10 +14,10 @@ export default class UserInfo {
  
   setUserInfo(data) {
     if(data.name) {
-      this._username.textContent = data.name;
+      this._userName.textContent = data.name;
     }
     if(data.about) {
-      this._userJob.textContent = data.about;
+      this._userAbout.textContent = data.about;
     }
     if(data) {
       this.setUserAvatar(data);
@@ -31,4 +31,4 @@ export default class UserInfo {
   }
   } 
 
-  //Исправил, но теперь возникает ошибка с PopupWithConfirmation и PopupWithForm и в index.js
+  //Исправил
