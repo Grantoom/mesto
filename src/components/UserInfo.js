@@ -12,12 +12,23 @@ export default class UserInfo {
     }; 
   } 
  
-  setUserInfo({ name, about }) { 
-    this._userName.textContent = name; 
-    this._userAbout.textContent = about; 
+  setUserInfo(data) {
+    if(data.name) {
+      this._username.textContent = data.name;
+    }
+    if(data.about) {
+      this._userJob.textContent = data.about;
+    }
+    if(data) {
+      this.setUserAvatar(data);
+    }
   }
 
-  setAvatar({ avatar }) {
-    this._profileAvatar.src = avatar;
+  setUserAvatar(data) {
+    if(data.avatar) {
+      this._profileAvatar.src = data.avatar;
+    }
   }
   } 
+
+  //Исправил, но теперь возникает ошибка с PopupWithConfirmation и PopupWithForm и в index.js
