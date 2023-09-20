@@ -54,7 +54,8 @@ deleteCardPopup.setEventListeners();
 
 const userInfo = new UserInfo({
   userNameSelector: ".profile__section-title",
-  userAboutSelector: ".profile__section-subtitle"
+  userAboutSelector: ".profile__section-subtitle",
+  profileAvatarSelector: ".profile__avatar"
 });
 
 const cardSection = new Section({
