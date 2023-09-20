@@ -1,18 +1,34 @@
-export default class UserInfo {
-  constructor({ userNameSelector, userAboutSelector }) {
-    this._userName = document.querySelector(userNameSelector);
-    this._userAbout = document.querySelector(userAboutSelector);
+export default class UserInfo { 
+  constructor({ userNameSelector, userAboutSelector, profileAvatarSelector }) { 
+    this._userName = document.querySelector(userNameSelector); 
+    this._userAbout = document.querySelector(userAboutSelector); 
+    this._profileAvatar = document.querySelector(profileAvatarSelector);
+  } 
+ 
+  getUserInfo() { 
+    return { 
+      name: this._userName.textContent, 
+      about: this._userAbout.textContent, 
+    }; 
+  } 
+ 
+  setUserInfo(data) {
+    if(data.name) {
+      this._userName.textContent = data.name;
+    }
+    if(data.about) {
+      this._userAbout.textContent = data.about;
+    }
+    if(data) {
+      this.setUserAvatar(data);
+    }
   }
 
-  getUserInfo() {
-    return {
-      name: this._userName.textContent,
-      about: this._userAbout.textContent,
-    };
+  setUserAvatar(data) {
+    if(data.avatar) {
+      this._profileAvatar.src = data.avatar;
+    }
   }
+  } 
 
-  setUserInfo({ name, about }) {
-    this._userName.textContent = name;
-    this._userAbout.textContent = about;
-  }
-}
+  //Исправил

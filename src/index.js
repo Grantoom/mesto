@@ -1,4 +1,5 @@
-import { initialCards, config, buttonOpenPopupProfile, buttonAddPopupProfile, nameInputField, aboutInputField } from "./utils/constants.js";
+import "./pages/index.css";
+
 import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
 import Section from "./components/Section.js";
@@ -6,8 +7,16 @@ import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
 import PopupWithConfirmation from "./components/PopupWithConfirmation.js";
 import UserInfo from "./components/UserInfo.js";
-import "./pages/index.css";
-import Api from "./components/Api.js"
+import Api from "./components/Api.js";
+
+import {
+  initialCards,
+  config,
+  buttonOpenPopupProfile,
+  buttonAddPopupProfile,
+  nameInputField,
+  aboutInputField
+} from "./utils/constants.js";
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-75',
@@ -18,8 +27,7 @@ const api = new Api({
 });
 
 function mergeInitialCards(loadedCards) {
-  const mergedCards = initialCards.concat(loadedCards);
-  return mergedCards;
+  return initialCards.concat(loadedCards);
 }
 
 const buttonAvatarPopupProfile = document.querySelector(".profile__avatar-edit-button");
@@ -31,16 +39,19 @@ const popupAvatar = new PopupWithForm(".popup_type_avatar", ({ avatar }) => {
 popupAvatar.setEventListeners();
 
 buttonAvatarPopupProfile.addEventListener("click", () => {
-  validAvatar.resetValidationState(); 
+  validAvatar.resetValidationState();
   popupAvatar.open();
 });
 
 const deleteCardPopup = new PopupWithConfirmation(".popup_type_delete-card", () => {
   const cardToDelete = deleteCardPopup.cardToDelete;
   if (cardToDelete) {
-      cardToDelete._removeCard();
+    api.deleteCard(cardToDelete.getId())
+      .then(() => {
+        cardToDelete._removeCard();
+      })
+      .catch((err) => console.log(`Ошибка удаления карточки: ${err}`));
   }
-  deleteCardPopup.close();
 });
 
 deleteCardPopup.setEventListeners();
@@ -48,6 +59,7 @@ deleteCardPopup.setEventListeners();
 const userInfo = new UserInfo({
   userNameSelector: ".profile__section-title",
   userAboutSelector: ".profile__section-subtitle",
+  profileAvatarSelector: ".profile__avatar"
 });
 
 const cardSection = new Section({
@@ -55,7 +67,7 @@ const cardSection = new Section({
   renderer: (item) => {
     const cardElement = createCard(item.name, item.link);
     cardSection.addItem(cardElement);
-  },
+  }
 }, ".cardsPlace");
 
 api.getCards()
@@ -83,14 +95,13 @@ function createCard(name, link) {
   return cardElement;
 }
 
-
 const popupWithImage = new PopupWithImage(".popup-image");
 popupWithImage.setEventListeners();
 
 const editProfilePopup = new PopupWithForm(".popup_edit-profile", ({ nameEditProfile, aboutEditProfile }) => {
   userInfo.setUserInfo({
     name: nameEditProfile,
-    about: aboutEditProfile,
+    about: aboutEditProfile
   });
 });
 

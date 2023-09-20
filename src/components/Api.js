@@ -6,7 +6,7 @@ export default class Api {
 
     _sendRequest(baseUrl, options) {
         return fetch(baseUrl, options)
-          .then(res => {
+          .then((res) => {
             if (res.ok) {
               return res.json();
             }
