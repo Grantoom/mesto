@@ -75,7 +75,7 @@ function createCard(data) {
   const handlePopupDelete = (id) => {
     deleteCardPopup.open();
     deleteCardPopup.addSubmitHandler(() => {
-      api.deleteCard(id)
+      api.deleteCard(data._id)
       .then(() => {
         cardElement._remove();
         deleteCardPopup.close();
