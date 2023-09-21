@@ -1,7 +1,6 @@
 import Popup from './Popup.js';
 
 class PopupWithForm extends Popup {
-  // Наследует от Popup и принимает в конструктор селектор popup и callback сабмита формы
   constructor(popupSelector, callbackFormSubmit, formValidators) {
     super(popupSelector);
     this._callbackFormSubmit = callbackFormSubmit;
@@ -12,7 +11,6 @@ class PopupWithForm extends Popup {
     this._popupButtonTextContent = this._popupButton.textContent;
   }
 
-  // Метод собирает данные всех полей формы
   _getInputValues() {
     const formValues = {};
     this._inputList.forEach((input) => {
@@ -37,7 +35,6 @@ class PopupWithForm extends Popup {
     }
 }
 
-  // Метод закрытия popup
   close() {
     super.close();
     this._formItem.reset();

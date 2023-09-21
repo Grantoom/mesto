@@ -5,7 +5,6 @@ export default class UserInfo {
     this._profileAvatar = document.querySelector(userAvatarSelectors);
   }
 
-  // Метод возвращает объект с данными пользователя
   getUserInfo() {
     return {
       username: this._username.textContent,
@@ -13,7 +12,6 @@ export default class UserInfo {
     };
   } 
 
-  // Метод принимает новые данные пользователя и добавляет их на страницу
   setUserInfo(data) {
     if(data.name) {
       this._username.textContent = data.name;

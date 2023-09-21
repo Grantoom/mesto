@@ -4,7 +4,6 @@ export default class Section {
       this._container = document.querySelector(containerSelector);
   }
 
-  // Метод принимает DOM-элемент и добавляет его в контейнер
   addItem(cardElement) {
     this._container.prepend(cardElement);
   }

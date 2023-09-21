@@ -19,7 +19,6 @@ export class FormValidator {
     buttonElement.disabled = false;
     buttonElement.classList.remove(this._inactiveButtonClass);
   }
-  /** метод для очистки ошибок и управления кнопкой */
   resetValidation() {
     this._toggleButtonState(this._submitButton); 
 
@@ -47,7 +46,6 @@ export class FormValidator {
     errorElement.textContent = "";
   }
 
-/** функция проверки валидности */
   _checkInputValidation(inputElement, formElement) {
     const inputValid = inputElement.validity.valid;
     const errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
@@ -59,7 +57,6 @@ export class FormValidator {
     };
   }
 
-/** вешаем обработчики событий на формы и инпуты */
   _setEventListener(formElement) {
     this._toggleButtonState(this._submitButton, this._formElement.checkValidity());
 

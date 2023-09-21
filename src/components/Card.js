@@ -25,7 +25,6 @@ export class Card {
       this._handleCardDeleteLike = handleCardDeleteLike;
     }
   
-    // Метод получения шаблона карточки
     _getTemplate() {
       const cardElement = document
         .querySelector(this._templateElementSelector)
@@ -36,12 +35,10 @@ export class Card {
       return cardElement;
     }
   
-    // Метод обновления данных о лайках
     updateCardLike(response) {
       this._likes = response.likes;
     }
   
-    // Метод отображения лайков и их количества
     renderCardLike() {
       this.likesCount.textContent = this._likes.length;
       if (this._likes.find((userLike) => userLike._id === this._userId)) {
@@ -51,7 +48,6 @@ export class Card {
       }
     }
   
-    // Метод обработки добавления и удаления лайков
     _interactLike() {
       if (this._likes.find((userLike) => userLike._id === this._userId)) {
         this._handleCardDeleteLike(this._cardId);
@@ -65,25 +61,20 @@ export class Card {
       this._element = null;
     }
   
-    // Устанавливаем слушатели на карточку: лайк, удаление, нажатие на изображение
     _setEventListeners() {
-      // Слушатель кнопки лайка
       this._elementLikeBtn.addEventListener('click', () => {
         this._interactLike();
       });
   
-      // Слушатель кнопки удаления
       this._elementDeleteBtn.addEventListener('click', () => {
         this._handleDelete();
       });
   
-      // Слушатель нажатия на изображение
       this._elementImage.addEventListener('click', () => {
         this._handleCardClick(this._name, this._link);
       });
     }
   
-    // Метод создания карточки
     generateCard() {
       this._element = this._getTemplate();
       this._elementImage = this._element.querySelector('.element__img');
