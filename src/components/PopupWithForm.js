@@ -28,6 +28,13 @@ class PopupWithForm extends Popup {
       this._callbackFormSubmit(inputValues);
     });
   }
+  
+  open() {
+    super.open();
+    if (this._formItem.getAttribute("name") in formValidators) {
+      formValidators[this._formItem.getAttribute("name")].resetValidation();
+    }
+  }
 
   // Метод закрытия popup
   close() {

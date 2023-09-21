@@ -151,15 +151,13 @@ api.getAllNeededData()
     })
     popupAvatar.setEventListeners();
 
-    const openProfileEditPopup = function() {
-      formValidators['inputProfile'].resetValidation();
-    
+    const openProfileEditPopup = function () {
       const userData = newUserInfo.getUserInfo();
       nameInput.value = userData.username;
       jobInput.value = userData.profession;
     
       popupProfileEdit.open();
-    }
+    };
     
     iconAvatarEdit.addEventListener('click', function () {
       popupAvatar.open();
