@@ -82,7 +82,7 @@ function createCard(name, link) {
   const card = new Card(
     name,
     link,
-    "#card-template",
+    "#element-template",
     (name, link) => {
       popupWithImage.open(name, link);
     },
@@ -98,10 +98,10 @@ function createCard(name, link) {
 const popupWithImage = new PopupWithImage(".popup-image");
 popupWithImage.setEventListeners();
 
-const editProfilePopup = new PopupWithForm(".popup_edit-profile", ({ nameEditProfile, aboutEditProfile }) => {
+const editProfilePopup = new PopupWithForm(".popup_edit-profile", ({ username, profession }) => {
   userInfo.setUserInfo({
-    name: nameEditProfile,
-    about: aboutEditProfile
+    name: username,
+    about: profession
   });
 });
 
