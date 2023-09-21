@@ -83,7 +83,7 @@ function createCard(data) {
       .catch((error) => { console.log(`При закрытии карточки возникла ошибка, ${error}`) })
     });
   }
-
+  
   const cardElement = new Card(data, '#element-template', userId,
     handleCardClick, handleLikesCard, handleDeleteLike, handlePopupDelete);
   return cardElement.generateCard();
@@ -110,7 +110,6 @@ api.getAllNeededData()
       .catch((error) => { console.log(`При добавлении карточки возникла ошибка, ${error}`) })
     }, formValidators);
 
-
     const popupProfileEdit = new PopupWithForm('.popup_edit-profile', (formValues) => {
       popupProfileEdit.renderLoading(true);
       api.sendUserInfo(formValues)
@@ -121,17 +120,12 @@ api.getAllNeededData()
       .catch((error) => { console.log(`При редактировании профиля возникла ошибка, ${error}`) })
     }, formValidators);
 
-    
-
-    // Включение валидации
     const enableValidation = (config) => {
       const formList = Array.from(document.querySelectorAll(config.formSelector))
       formList.forEach((formElement) => {
         const validator = new FormValidator(config, formElement)
-    // получаем данные из атрибута `name` у формы
         const formName = formElement.getAttribute('name');
     
-       // в объект записываем под именем формы
         formValidators[formName] = validator;
         validator.enableValidation();
       });
