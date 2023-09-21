@@ -87,7 +87,7 @@ export default class Api {
         })
     }
 
-    getAllNeededData() {
+    getData() {
         return Promise.all([this.getCards(), this.getUserInfo()])
     }
 }

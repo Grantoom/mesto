@@ -2,7 +2,7 @@ export class Card {
     constructor(
       cardData,
       templateElementSelector,
-      userId,
+      personalId,
       handleCardClick,
       handleLikesCard,
       handleCardDeleteLike,
@@ -11,21 +11,21 @@ export class Card {
       this._card = cardData;
       this._name = this._card.name;
       this._link = this._card.link;
-      this._likes = this._card.likes;
-  
-      this._templateElementSelector = templateElementSelector;
-  
-      this._userId = userId;
-      this._cardId = this._card._id;
-      this._ownerId = this._card.owner._id;
-  
       this._handleCardClick = handleCardClick;
       this._handleDelete = handleDelete;
       this._handleLikesCard = handleLikesCard;
       this._handleCardDeleteLike = handleCardDeleteLike;
+      this._likes = this._card.likes;
+  
+      this._templateElementSelector = templateElementSelector;
+  
+      this._userId = personalId;
+      this._cardId = this._card._id;
+      this._ownerId = this._card.owner._id;
+  
     }
   
-    _getTemplate() {
+    _getTemplateElement() {
       const cardElement = document
         .querySelector(this._templateElementSelector)
         .content
@@ -39,7 +39,7 @@ export class Card {
       this._likes = response.likes;
     }
   
-    renderCardLike() {
+    createCardLike() {
       this.likesCount.textContent = this._likes.length;
       if (this._likes.find((userLike) => userLike._id === this._userId)) {
         this._elementLikeBtn.classList.add('element__vector_active');
@@ -76,7 +76,7 @@ export class Card {
     }
   
     generateCard() {
-      this._element = this._getTemplate();
+      this._element = this._getTemplateElement();
       this._elementImage = this._element.querySelector('.element__img');
       this._elementName = this._element.querySelector('.element__text');
       this._elementLikeBtn = this._element.querySelector('.element__vector');
@@ -86,7 +86,7 @@ export class Card {
       this._elementImage.src = this._link;
       this._elementImage.alt = this._name;
       this._elementName.textContent = this._name;
-      this.renderCardLike(this._card);
+      this.createCardLike(this._card);
   
       this._element.querySelector('.element__like-count').textContent = this._likes.length;
   

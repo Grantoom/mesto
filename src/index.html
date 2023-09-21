@@ -83,7 +83,7 @@
     <!-- Popup для добавления карточки -->
   <div class="popup popup_add-photo">
     <div class="popup__container">
-      <button class="popup__exit" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <button class="popup__exit" type="button" aria-label="Закрыть окно"></button>
 
       <h2 class="popup__header">Новое место</h2>
       <form class="popup__form popup__form_add-photo" name="popupFormAddCard" method="POST" novalidate>
@@ -95,7 +95,7 @@
           <input id="placeLink-input" class="popup__input popup__input_UrlCard" placeholder="Ссылка на картинку" name="link" type="url" required>
           <span id="link-error" class="popup__error-visible"></span>
         </label>
-        <button class="popup__submit-button popup__submit-button_add-photo" type="submit" aria-label="Создать карточку с новым местом">Создать</button>
+        <button class="popup__submit-button popup__submit-button_add-photo" type="submit" aria-label="Создать новую карточку">Создать</button>
       </form>
 
     </div>
@@ -105,7 +105,7 @@
   <div class="popup popup-image">
     <div class="popup-image__container">
 
-      <button class="popup__exit" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <button class="popup__exit" type="button" aria-label="Закрыть окно"></button>
       <img class="popup-image__pic" alt="#" src="#">
       <p class="popup-image__title"></p>
 
@@ -115,15 +115,17 @@
  <!-- Popup для удаления карточки -->
 <div class="popup popup_type_delete-card">
   <div class="popup__container-delete">
+
     <form class="popup__form popup__form_delete">
       <button class="popup__exit" type="button"></button>
       <h2 class="popup__header">Вы уверены?</h2>
       <button type="submit" class="popup__submit-button popup__type-delete" aria-label="Удалить карточку">Да</button>
     </form>
+
   </div>
 </div>
 
-
+   <!-- Карточки -->
   <template id="element-template">
     <div class="element">
 
