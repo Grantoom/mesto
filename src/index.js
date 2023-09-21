@@ -55,7 +55,7 @@ function handleCardClick(name, link) {
 function createCard(data) {
 
   const handleLikesCard = (id) => {
-    api.addCardLike(id)
+    api.addCardLike(data._id)
     .then((res) => {
       cardElement.updateCardLike(res);
       cardElement.renderCardLike();
@@ -75,7 +75,7 @@ function createCard(data) {
   const handlePopupDelete = (id) => {
     deleteCardPopup.open();
     deleteCardPopup.addSubmitHandler(() => {
-      api.deleteCard(data._id)
+      api.deleteCard(id)
       .then(() => {
         cardElement._remove();
         deleteCardPopup.close();
@@ -166,3 +166,4 @@ api.getAllNeededData()
     popupWithImage.setEventListeners();
     popupProfileEdit.setEventListeners();
     popupAddCard.setEventListeners();
+    deleteCardPopup.setEventListeners();
