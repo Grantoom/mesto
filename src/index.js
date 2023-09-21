@@ -106,7 +106,7 @@ api.getAllNeededData()
         popupAddCard.close();
       })
       .catch((error) => { console.log(`При добавлении карточки возникла ошибка, ${error}`) })
-    });
+    }, formValidators);
 
 
     const popupProfileEdit = new PopupWithForm('.popup_edit-profile', (formValues) => {
@@ -117,8 +117,7 @@ api.getAllNeededData()
         popupProfileEdit.close();
       })
       .catch((error) => { console.log(`При редактировании профиля возникла ошибка, ${error}`) })
-      //popupProfileEdit.close();
-    });
+    }, formValidators);
 
     const formValidators = {}
 
@@ -148,7 +147,7 @@ api.getAllNeededData()
       })
       .catch((error) => console.log(error))
       .finally(() => popupAvatar.renderLoading(false))
-    })
+    }, formValidators)
     popupAvatar.setEventListeners();
 
     const openProfileEditPopup = function () {

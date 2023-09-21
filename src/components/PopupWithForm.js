@@ -2,9 +2,10 @@ import Popup from './Popup.js';
 
 class PopupWithForm extends Popup {
   // Наследует от Popup и принимает в конструктор селектор popup и callback сабмита формы
-  constructor(popupSelector, callbackFormSubmit) {
+  constructor(popupSelector, callbackFormSubmit, formValidators) {
     super(popupSelector);
     this._callbackFormSubmit = callbackFormSubmit;
+    this._formValidators = formValidators;
     this._formItem = this._popupItem.querySelector('.popup__form');
     this._inputList = Array.from(this._formItem.querySelectorAll('.popup__input'));
     this._popupButton = this._formItem.querySelector('.popup__submit-button');
@@ -31,10 +32,10 @@ class PopupWithForm extends Popup {
   
   open() {
     super.open();
-    if (this._formItem.getAttribute("name") in formValidators) {
-      formValidators[this._formItem.getAttribute("name")].resetValidation();
+    if (this._formItem.getAttribute("name") in this._formValidators) {
+      this._formValidators[this._formItem.getAttribute("name")].resetValidation();
     }
-  }
+}
 
   // Метод закрытия popup
   close() {

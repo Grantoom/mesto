@@ -8,16 +8,13 @@ export class PopupWithConfirmation extends Popup {
     }
     
     addSubmitHandler(handler) {
-      this._submitHandler = handler;
-      this._popupConfirmButton.addEventListener("click", () => {
-        this._submitHandler();
-        this._popupConfirmButton.removeEventListener("click", this._submitHandler);
-      });
+        this._submitHandler = handler;
     }
     
     setEventListeners() {
         super.setEventListeners();
-        this._popupConfirmButton.addEventListener('click', () => {
+        this._popupConfirmButton.addEventListener('click', (evt) => {
+          evt.preventDefault();
           this._submitHandler();
         });
     }
