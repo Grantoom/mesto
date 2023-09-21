@@ -9,8 +9,8 @@ export default class Section {
   }
   
   renderItems(data) {
-    for (let index = data.length - 1; index >= 0; index--) {
-      this._renderer(data[index]);
-    }
-  }
+    data.forEach(item => {
+      this._renderer(item);
+    });
+  }  
 }

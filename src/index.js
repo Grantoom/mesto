@@ -58,7 +58,7 @@ function createCard(data) {
     api.addCardLike(data._id)
     .then((res) => {
       cardElement.updateCardLike(res);
-      cardElement.renderCardLike();
+      cardElement.createCardLike();
     })
     .catch((error) => { console.log(`При лайке карточки возникла ошибка, ${error}`) })
   }
@@ -67,7 +67,7 @@ function createCard(data) {
     api.deleteCardLike(id)
     .then((res) => {
       cardElement.updateCardLike(res);
-      cardElement.renderCardLike();
+      cardElement.createCardLike();
     })
     .catch((error) => { console.log(`При дизлайке карточки возникла ошибка, ${error}`) })
   }
