@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: "Архыз",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
@@ -25,18 +25,32 @@ const initialCards = [
   },
 ];
 
-const config = {
+export const configFormSelector = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__submit-button",
   inactiveButtonClass: "popup__save_invalid",
   inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
 };
 
-const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
-const buttonAddPopupProfile = document.querySelector(".profile__add-button"); 
-const nameInputField = document.querySelector("#username");
-const aboutInputField = document.querySelector("#job");
+const popupProfileEditElement = document.querySelector('.popup_edit-profile');
+const profileEditButtonElement = document.querySelector('.profile__edit-button');
+const formElementEditProfile = popupProfileEditElement.querySelector('.popup__form');
+const nameInput = formElementEditProfile.querySelector('#userName-input');
+const jobInput = formElementEditProfile.querySelector('#userProf-input');
+const cardPopupOpenButton = document.querySelector('.profile__add-button');
+const iconAvatarEdit = document.querySelector('.profile__avatar-edit-button');
+const userName = document.querySelector('.profile__section-title');
+const userInfo = document.querySelector('.profile__section-subtitle');
+const userAvatar = document.querySelector('.profile__avatar');
 
-export { initialCards, config, buttonOpenPopupProfile, buttonAddPopupProfile, nameInputField, aboutInputField };
+export {
+  profileEditButtonElement,
+  nameInput,
+  jobInput,
+  cardPopupOpenButton,
+  iconAvatarEdit,
+  userName,
+  userInfo,
+  userAvatar
+};

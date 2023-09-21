@@ -1,18 +1,19 @@
-import Popup from "./Popup.js";
+import Popup from './Popup.js';
 
-export default class PopupWithImage extends Popup {
-  constructor(selector) {
-    super(selector);
-    this._imageElement = this._popup.querySelector(".popup-image__pic");
-    this._imageCaption = this._popup.querySelector(".popup-image__title");
+class PopupWithImage extends Popup {
+  constructor(popupSelector) {
+    super(popupSelector);
+    this._popupCaption = this._popupItem.querySelector('.popup-image__title');
+    this._popupImage = this._popupItem.querySelector('.popup-image__pic');
   }
 
-  open(link, name) {
-    this._imageElement.src = link;
-    this._imageElement.alt = name;
-    this._imageCaption.textContent = name;
+  open(name, link) {
+    this._popupCaption.textContent = name;
+    this._popupImage.src = link;
+    this._popupImage.alt = name;
     super.open();
   }
+
 }
 
-// Исправил
+export default PopupWithImage;
