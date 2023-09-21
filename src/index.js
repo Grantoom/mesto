@@ -96,6 +96,8 @@ api.getAllNeededData()
     cardSection.renderItems(cards);
   })
   .catch((error) => console.log(error))
+  
+  const formValidators = {}
 
   const popupAddCard = new PopupWithForm('.popup_add-photo', (formValues) => {
     popupAddCard.renderLoading(true);
@@ -119,7 +121,7 @@ api.getAllNeededData()
       .catch((error) => { console.log(`При редактировании профиля возникла ошибка, ${error}`) })
     }, formValidators);
 
-    const formValidators = {}
+    
 
     // Включение валидации
     const enableValidation = (config) => {
