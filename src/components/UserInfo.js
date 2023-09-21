@@ -1,23 +1,25 @@
-export default class UserInfo { 
-  constructor({ userNameSelector, userAboutSelector, profileAvatarSelector }) { 
-    this._userName = document.querySelector(userNameSelector); 
-    this._userAbout = document.querySelector(userAboutSelector); 
-    this._profileAvatar = document.querySelector(profileAvatarSelector);
+export default class UserInfo {
+  constructor({ userNameSelector, userJobSelector, userAvatarSelectors }) {
+    this._username = document.querySelector(userNameSelector);
+    this._userJob = document.querySelector(userJobSelector);
+    this._profileAvatar = document.querySelector(userAvatarSelectors);
+  }
+
+  // Метод возвращает объект с данными пользователя
+  getUserInfo() {
+    return {
+      username: this._username.textContent,
+      profession: this._userJob.textContent,
+    };
   } 
- 
-  getUserInfo() { 
-    return { 
-      name: this._userName.textContent, 
-      about: this._userAbout.textContent, 
-    }; 
-  } 
- 
+
+  // Метод принимает новые данные пользователя и добавляет их на страницу
   setUserInfo(data) {
     if(data.name) {
-      this._userName.textContent = data.name;
+      this._username.textContent = data.name;
     }
     if(data.about) {
-      this._userAbout.textContent = data.about;
+      this._userJob.textContent = data.about;
     }
     if(data) {
       this.setUserAvatar(data);
@@ -29,6 +31,4 @@ export default class UserInfo {
       this._profileAvatar.src = data.avatar;
     }
   }
-  } 
-
-  //Исправил
+}

@@ -1,42 +1,47 @@
-import Popup from "./Popup.js";
+import Popup from './Popup.js';
 
-export default class PopupWithForm extends Popup {
-  constructor(popupSelector, submitCallback) {
+class PopupWithForm extends Popup {
+  // Наследует от Popup и принимает в конструктор селектор popup и callback сабмита формы
+  constructor(popupSelector, callbackFormSubmit) {
     super(popupSelector);
-    this._form = this._popup.querySelector(".popup__form");
-    this._submitCallback = submitCallback;
+    this._callbackFormSubmit = callbackFormSubmit;
+    this._formItem = this._popupItem.querySelector('.popup__form');
+    this._inputList = Array.from(this._formItem.querySelectorAll('.popup__input'));
+    this._popupButton = this._formItem.querySelector('.popup__submit-button');
+    this._popupButtonTextContent = this._popupButton.textContent;
   }
 
+  // Метод собирает данные всех полей формы
   _getInputValues() {
-    const values = {};
-    this._form.querySelectorAll(".popup__input").forEach((input) => {
-      values[input.name] = input.value;
+    const formValues = {};
+    this._inputList.forEach((input) => {
+      formValues[input.name] = input.value;
     });
-    return values;
+    return formValues;
   }
 
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener("submit", (evt) => {
+    this._formItem.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._submitCallback(this._getInputValues());
-      this.close();
-      this.resetForm();
+      const inputValues = this._getInputValues();
+      this._callbackFormSubmit(inputValues);
     });
   }
 
-  resetForm() {
-    this._form.reset();
-  }
-  
-  resetValidation() {
-    if (this._submitCallback.resetValidation) {
-      this._submitCallback.resetValidation();
-    }
-  } 
-  
+  // Метод закрытия popup
   close() {
     super.close();
-    this.resetForm();
+    this._formItem.reset();
+  }
+
+  renderLoading(isLoading) {
+    if(isLoading) {
+      this._popupButton.textContent = 'Сохранение...';
+    } else {
+      this._popupButton.textContent = this._popupButtonTextContent;
+    }
   }
 }
+
+export default PopupWithForm;
