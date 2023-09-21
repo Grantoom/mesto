@@ -81,7 +81,7 @@
 /*!****************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__vector/_active/element__vector_active.css ***!
   \****************************************************************************************************************************************************************************************/
-.element__vector_active{background:url(35948469632d0421d697.svg) 50% no-repeat}
+.element__vector_active{background:url(35948469632d0421d697.svg) 50% no-repeat;border:none;cursor:pointer;height:19px;width:22px}
 /*!******************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/footer/footer.css ***!
   \******************************************************************************************************************************************************/
@@ -149,7 +149,7 @@
 /*!**********************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/__save/_invalid/popup__save_invalid.css ***!
   \**********************************************************************************************************************************************************************************/
-.popup__save_invalid{background-color:#fff;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.15);font-family:Inter,Arial\ ,sans-serif}
+.popup__save_invalid{background-color:#fff;border:1px solid #000;border-radius:2px;color:#000;opacity:.2;pointer-events:none}
 /*!*******************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/__label/popup__label.css ***!
   \*******************************************************************************************************************************************************************/

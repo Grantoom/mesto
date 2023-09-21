@@ -42,19 +42,20 @@
 
   </div>
 
+    <!-- Popup для редактирования профиля -->
   <div class="popup popup_edit-profile">
     <div class="popup__container">
-      <button class="popup__exit" type="button"></button>
+      <button class="popup__exit" type="button" aria-label="Закрыть окно"></button>
 
       <h2 class="popup__header">Редактировать профиль</h2>
-      <form class="popup__form popup__form_edit-profile" name="inputProfile" novalidate>
+      <form class="popup__form popup__form_edit-profile" name="popupFormProfile" method="POST" novalidate>
         <label class="popup__label">
-          <input id="username" class="popup__input popup__input_role_name" placeholder="Имя" name="nameEditProfile" type="text" required minlength="2" maxlength="40">
+          <input id="userName-input" class="popup__input popup__input_role_name" placeholder="Имя" name="username" type="text" minlength="2" maxlength="40" required>
           <span id="username-error" class="popup__error-visible"></span>
         </label>
         <label class="popup__label">
-          <input id="job" class="popup__input popup__input_role_about" placeholder="О себе" name="aboutEditProfile" type="text" required minlength="2" maxlength="200">
-          <span id="job-error" class="popup__error-visible"></span>
+          <input id="userProf-input" class="popup__input popup__input_role_about" placeholder="О себе" name="profession" type="text" minlength="2" maxlength="200" required>
+          <span id="profession-error" class="popup__error-visible"></span>
         </label>
         <button class="popup__submit-button popup__submit-button_edit-profile" type="submit">Сохранить</button>
       </form>
@@ -62,67 +63,78 @@
     </div>
   </div>
 
-  <div class="popup popup_add-photo">
-    <div class="popup__container">
-      <button class="popup__exit" type="button"></button>
-
-      <h2 class="popup__header">Новое место</h2>
-      <form class="popup__form popup__form_add-photo" name="inputCard" novalidate>
-        <label class="popup__label">
-          <input id="name" class="popup__input popup__input_NameCard" placeholder="Название" name="nameAddPhoto" type="text" required minlength="2" maxlength="30">
-          <span id="name-error" class="popup__error-visible"></span>
-        </label>
-        <label class="popup__label">
-          <input id="link" class="popup__input popup__input_UrlCard" placeholder="Ссылка на картинку" name="linkAddPhoto" required type="url">
-          <span id="link-error" class="popup__error-visible"></span>
-        </label>
-        <button class="popup__submit-button popup__submit-button_add-photo" type="submit">Создать</button>
-      </form>
-
-    </div>
-  </div>
-
-  <div class="popup popup_type_avatar">
+    <!-- Начало popup обновления аватара -->
+   <div class="popup popup_type_avatar">
     <div class="popup__container-avatar">
+
       <button class="popup__exit" type="button"></button>
       <form class="popup__form popup__form_avatar" name="inputAvatar" novalidate>
         <h2 class="popup__header">Обновить аватар</h2>
         <label class="popup__label">
-          <input id="avatar-link" class="popup__input popup__input_type_title" required type="url" name="avatar" placeholder="Введите ссылку на аватар" minlength="2" maxlength="200">
-          <span id="avatar-link-error" class="popup__error-visible"></span>
+          <input id="url" class="popup__input popup__input_type_title" type="url" name="userAvatar" placeholder="Введите ссылку на аватар" minlength="2" maxlength="200" required>
+          <span id="userAvatar-error" class="popup__error-visible"></span>
         </label>
         <button class="popup__submit-button" type="submit">Сохранить</button>
       </form>
+
     </div>
   </div>
 
-  <div class="popup popup_type_delete-card">
-   <div class="popup__container-delete">
-      <form class="popup__form popup__form_delete" name="deleteCard">
-        <button class="popup__exit" type="button"></button>
-        <h2 class="popup__header">Вы уверены?</h2>
-        <button class="popup__submit-button popup__type-delete">Да</button>
+    <!-- Popup для добавления карточки -->
+  <div class="popup popup_add-photo">
+    <div class="popup__container">
+      <button class="popup__exit" type="button" aria-label="Закрыть окно"></button>
+
+      <h2 class="popup__header">Новое место</h2>
+      <form class="popup__form popup__form_add-photo" name="popupFormAddCard" method="POST" novalidate>
+        <label class="popup__label">
+          <input id="placeName-input" class="popup__input popup__input_NameCard" placeholder="Название" name="name" type="text" minlength="2" maxlength="30" required>
+          <span id="name-error" class="popup__error-visible"></span>
+        </label>
+        <label class="popup__label">
+          <input id="placeLink-input" class="popup__input popup__input_UrlCard" placeholder="Ссылка на картинку" name="link" type="url" required>
+          <span id="link-error" class="popup__error-visible"></span>
+        </label>
+        <button class="popup__submit-button popup__submit-button_add-photo" type="submit" aria-label="Создать новую карточку">Создать</button>
       </form>
+
     </div>
   </div>
 
+    <!-- Popup для увеличение изображения по клику -->
   <div class="popup popup-image">
     <div class="popup-image__container">
-      <button class="popup__exit" type="button"></button>
-      <img class="popup-image__pic" alt="image" src=".">
+
+      <button class="popup__exit" type="button" aria-label="Закрыть окно"></button>
+      <img class="popup-image__pic" alt="#" src="#">
       <p class="popup-image__title"></p>
+
     </div>
   </div>
 
-  <template id="card-template">
+ <!-- Popup для удаления карточки -->
+<div class="popup popup_type_delete-card">
+  <div class="popup__container-delete">
+
+    <form class="popup__form popup__form_delete">
+      <button class="popup__exit" type="button"></button>
+      <h2 class="popup__header">Вы уверены?</h2>
+      <button type="submit" class="popup__submit-button popup__type-delete" aria-label="Удалить карточку">Да</button>
+    </form>
+
+  </div>
+</div>
+
+   <!-- Карточки -->
+  <template id="element-template">
     <div class="element">
 
-      <img class="element__img" src="." alt="">
-      <button class="element__trash" type="button"></button>
+      <img class="element__img" src="#" alt="#">
+      <button class="element__trash" type="button" aria-label="Удалить карточку"></button>
 
       <div class="element__description">
         <h2 class="element__text"></h2>
-        <button class="element__vector" type="button"></button>
+        <button class="element__vector" type="button" aria-label="Поставить лайк"></button>
         <p class="element__like-count">0</p>
       </div>
 
