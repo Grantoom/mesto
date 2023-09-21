@@ -15,10 +15,7 @@ import {
   nameInput,
   jobInput,
   cardPopupOpenButton,
-  iconAvatarEdit,
-  userName,
-  userInfo,
-  userAvatar
+  iconAvatarEdit
 } from './utils/constants.js';
 
 let userId;

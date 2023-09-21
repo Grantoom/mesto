@@ -40,17 +40,11 @@ const nameInput = formElementEditProfile.querySelector('#userName-input');
 const jobInput = formElementEditProfile.querySelector('#userProf-input');
 const cardPopupOpenButton = document.querySelector('.profile__add-button');
 const iconAvatarEdit = document.querySelector('.profile__avatar-edit-button');
-const userName = document.querySelector('.profile__section-title');
-const userInfo = document.querySelector('.profile__section-subtitle');
-const userAvatar = document.querySelector('.profile__avatar');
 
 export {
   profileEditButtonElement,
   nameInput,
   jobInput,
   cardPopupOpenButton,
-  iconAvatarEdit,
-  userName,
-  userInfo,
-  userAvatar
+  iconAvatarEdit
 };
