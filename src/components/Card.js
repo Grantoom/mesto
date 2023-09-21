@@ -2,7 +2,7 @@ export class Card {
     constructor(
       cardData,
       templateElementSelector,
-      userId,
+      personalId,
       handleCardClick,
       handleLikesCard,
       handleCardDeleteLike,
@@ -19,7 +19,7 @@ export class Card {
   
       this._templateElementSelector = templateElementSelector;
   
-      this._userId = userId;
+      this._userId = personalId;
       this._cardId = this._card._id;
       this._ownerId = this._card.owner._id;
   
