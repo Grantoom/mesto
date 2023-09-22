@@ -97,70 +97,77 @@ api.getData()
   const formValidators = {}
 
   const popupAddCard = new PopupWithForm('.popup_add-photo', (formValues) => {
-    popupAddCard.renderLoading(true);
-    api.createNewCard(formValues)
-      .then((data) => {
-        const cardsElements = createCard(data);
-        cardSection.addItem(cardsElements);
-        popupAddCard.close();
-      })
-      .catch((error) => { console.log(`При добавлении карточки возникла ошибка, ${error}`) })
-    }, formValidators);
+  popupAddCard.renderLoading(true);
+  api.createNewCard(formValues)
+    .then((data) => {
+      const cardsElements = createCard(data);
+      cardSection.addItem(cardsElements);
+      popupAddCard.close();
+    })
+    .catch((error) => { console.log(`При добавлении карточки возникла ошибка, ${error}`) })
+    .finally(() => {
+      popupAddCard.renderLoading(false);
+    });
+}, formValidators);
 
-    const popupProfileEdit = new PopupWithForm('.popup_edit-profile', (formValues) => {
-      popupProfileEdit.renderLoading(true);
-      api.sendUserInfo(formValues)
+  const popupProfileEdit = new PopupWithForm('.popup_edit-profile', (formValues) => {
+    popupProfileEdit.renderLoading(true);
+    api.sendUserInfo(formValues)
       .then((res) => {
         newUserInfo.setUserInfo(res);
         popupProfileEdit.close();
       })
       .catch((error) => { console.log(`При редактировании профиля возникла ошибка, ${error}`) })
-    }, formValidators);
-
-    const enableValidation = (config) => {
-      const formList = Array.from(document.querySelectorAll(config.formSelector))
-      formList.forEach((formElement) => {
-        const validator = new FormValidator(config, formElement)
-        const formName = formElement.getAttribute('name');
-    
-        formValidators[formName] = validator;
-        validator.enableValidation();
+      .finally(() => {
+        popupProfileEdit.renderLoading(false);
       });
-    };
-    
-    enableValidation(configFormSelector);
-    
-    const popupAvatar = new PopupWithForm('.popup_type_avatar', (data) => {
-      popupAvatar.renderLoading(true);
-       api.handleUserAvatar(data)
-       .then((res) => {
-        newUserInfo.setUserAvatar(res);
-        formValidators['inputAvatar'].resetValidation();
-        popupAvatar.close();
-      })
-      .catch((error) => console.log(error))
-      .finally(() => popupAvatar.renderLoading(false))
-    }, formValidators)
-    popupAvatar.setEventListeners();
+  }, formValidators);
 
-    const editProfilePopup = function () {
-      const userData = newUserInfo.getUserInfo();
-      nameInput.value = userData.username;
-      jobInput.value = userData.profession;
-    
-      popupProfileEdit.open();
-    };
-    
-    iconAvatarEdit.addEventListener('click', function () {
-      popupAvatar.open();
-    }); 
-    
-    profileEditButtonElement.addEventListener('click', editProfilePopup);
-    cardPopupOpenButton.addEventListener('click', () => {
-      popupAddCard.open(); 
-      formValidators['popupFormAddCard'].resetValidation();});
-    
-    popupWithImage.setEventListeners();
-    popupProfileEdit.setEventListeners();
-    popupAddCard.setEventListeners();
-    deleteCardPopup.setEventListeners();
+
+  const enableValidation = (config) => {
+    const formList = Array.from(document.querySelectorAll(config.formSelector))
+    formList.forEach((formElement) => {
+      const validator = new FormValidator(config, formElement)
+      const formName = formElement.getAttribute('name');
+  
+      formValidators[formName] = validator;
+      validator.enableValidation();
+    });
+  };
+  
+  enableValidation(configFormSelector);
+  
+  const popupAvatar = new PopupWithForm('.popup_type_avatar', (data) => {
+    popupAvatar.renderLoading(true);
+      api.handleUserAvatar(data)
+      .then((res) => {
+      newUserInfo.setUserAvatar(res);
+      formValidators['inputAvatar'].resetValidation();
+      popupAvatar.close();
+    })
+    .catch((error) => console.log(error))
+    .finally(() => popupAvatar.renderLoading(false))
+  }, formValidators)
+  popupAvatar.setEventListeners();
+
+  const editProfilePopup = function () {
+    const userData = newUserInfo.getUserInfo();
+    nameInput.value = userData.username;
+    jobInput.value = userData.profession;
+  
+    popupProfileEdit.open();
+  };
+  
+  iconAvatarEdit.addEventListener('click', function () {
+    popupAvatar.open();
+  }); 
+  
+  profileEditButtonElement.addEventListener('click', editProfilePopup);
+  cardPopupOpenButton.addEventListener('click', () => {
+    popupAddCard.open(); 
+    formValidators['popupFormAddCard'].resetValidation();});
+  
+  popupWithImage.setEventListeners();
+  popupProfileEdit.setEventListeners();
+  popupAddCard.setEventListeners();
+  deleteCardPopup.setEventListeners();
