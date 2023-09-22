@@ -32,19 +32,21 @@ class PopupWithForm extends Popup {
     super.open();
     if (this._formItem.getAttribute("name") in this._formValidators) {
       this._formValidators[this._formItem.getAttribute("name")].resetValidation();
+      this._popupButton.disabled = true;
     }
-}
-
+  }
+  
   close() {
     super.close();
     this._formItem.reset();
   }
 
   renderLoading(isLoading) {
-    if(isLoading) {
+    if (isLoading) {
       this._popupButton.textContent = 'Сохранение...';
     } else {
       this._popupButton.textContent = this._popupButtonTextContent;
+      this._popupButton.disabled = false;
     }
   }
 }
