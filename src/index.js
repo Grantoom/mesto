@@ -74,7 +74,7 @@ function createCard(data) {
     deleteCardPopup.addSubmitHandler(() => {
       api.deleteCard(data._id)
       .then(() => {
-        cardElement._remove();
+        cardElement.remove();
         deleteCardPopup.close();
       })
       .catch((error) => { console.log(`При закрытии карточки возникла ошибка, ${error}`) })
