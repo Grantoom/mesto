@@ -33,7 +33,7 @@ class PopupWithForm extends Popup {
     if (this._formItem.getAttribute("name") in this._formValidators) {
       this._formValidators[this._formItem.getAttribute("name")].resetValidation();
     }
-}
+  }
 
   close() {
     super.close();
