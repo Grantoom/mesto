@@ -142,13 +142,11 @@ api.getData()
       api.handleUserAvatar(data)
       .then((res) => {
       newUserInfo.setUserAvatar(res);
-      formValidators['inputAvatar'].resetValidation();
       popupAvatar.close();
     })
     .catch((error) => console.log(error))
     .finally(() => popupAvatar.renderLoading(false))
   }, formValidators)
-  popupAvatar.setEventListeners();
 
   const editProfilePopup = function () {
     const userData = newUserInfo.getUserInfo();
@@ -158,15 +156,19 @@ api.getData()
     popupProfileEdit.open();
   };
   
-  iconAvatarEdit.addEventListener('click', function () {
+  iconAvatarEdit.addEventListener('click', () => {
     popupAvatar.open();
+    formValidators['inputAvatar'].resetValidation();
   }); 
   
   profileEditButtonElement.addEventListener('click', editProfilePopup);
+
   cardPopupOpenButton.addEventListener('click', () => {
     popupAddCard.open(); 
-    formValidators['popupFormAddCard'].resetValidation();});
+    formValidators['popupFormAddCard'].resetValidation();
+  });
   
+  popupAvatar.setEventListeners();
   popupWithImage.setEventListeners();
   popupProfileEdit.setEventListeners();
   popupAddCard.setEventListeners();
